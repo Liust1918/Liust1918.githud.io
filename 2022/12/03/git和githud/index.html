@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>git和githud - Hexo</title><link rel="manifest" href="/Liust1918.githud.io/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/Battlerfiled3.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="使用Git+Githud"><meta property="og:type" content="blog"><meta property="og:title" content="git和githud"><meta property="og:url" content="https://liust1918.github.io/Liust1918.githud.io/2022/12/03/git%E5%92%8Cgithud/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="使用Git+Githud"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_154759.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160112.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160210.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160451.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160353.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/git%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_170540.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_170649.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171029.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171229.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171249.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172008.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172124.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172202.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172323.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172351.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172630.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173137.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173338.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173452.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8git.drawio-16443838374551.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF.drawio.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_135236.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155346.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155400.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155410.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155251.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_155751.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_171444.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_165746.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_165731.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_170743.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_171413.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E6%9C%AA%E7%9B%B4%E7%BA%BF.drawio.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-12_143426.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/image-20220212143658214.png"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF.drawio.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF1.drawio.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF11.drawio.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF12.drawio.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF13.drawio.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF14.drawio.svg"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF15.drawio.svg"><meta property="article:published_time" content="2022-12-03T15:14:48.000Z"><meta property="article:modified_time" content="2022-12-03T15:32:34.735Z"><meta property="article:author" content="John Doe"><meta property="article:tag" content="git"><meta property="article:tag" content="githud"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_154759.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://liust1918.github.io/Liust1918.githud.io/2022/12/03/git%E5%92%8Cgithud/"},"headline":"git和githud","image":["https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_154759.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160112.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160210.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160451.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160353.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_170540.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_170649.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171029.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171229.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171249.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172008.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172124.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172202.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172323.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172351.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172630.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173137.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173338.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173452.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_135236.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155346.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155400.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155410.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155251.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_155751.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_171444.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_165746.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_165731.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_170743.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_171413.png","https://liust1918.github.io/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-12_143426.png","https://liust1918.github.io/Liust1918.githud.io/image/image-20220212143658214.png"],"datePublished":"2022-12-03T15:14:48.000Z","dateModified":"2022-12-03T15:32:34.735Z","author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://liust1918.github.io/img/Battlerfiled3.jpg"}},"description":"使用Git+Githud"}</script><link rel="canonical" href="https://liust1918.github.io/Liust1918.githud.io/2022/12/03/git%E5%92%8Cgithud/"><link rel="icon" href="/Liust1918.githud.io/img/Battlerfiled3.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/Liust1918.githud.io/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><script data-ad-client="liust" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Liust1918.githud.io/"><img src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Liust1918.githud.io/">主页(Home)</a><a class="navbar-item" href="/Liust1918.githud.io/archives">文章(Archives)</a><a class="navbar-item" href="/Liust1918.githud.io/categories">类型(Categories)</a><a class="navbar-item" href="/Liust1918.githud.io/tags">标签(Tags)</a><a class="navbar-item" href="/Liust1918.githud.io/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-12-03T15:14:48.000Z" title="2022/12/3 23:14:48">2022-12-03</time>发表</span><span class="level-item"><time dateTime="2022-12-03T15:32:34.735Z" title="2022/12/3 23:32:34">2022-12-03</time>更新</span><span class="level-item"><a class="link-muted" href="/Liust1918.githud.io/categories/git/">git</a></span><span class="level-item">25 分钟读完 (大约3779个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">git和githud</h1><div class="content"><h1 id="使用Git-Githud"><a href="#使用Git-Githud" class="headerlink" title="使用Git+Githud"></a>使用Git+Githud</h1><span id="more"></span>
+
+<h1 id="git干什么"><a href="#git干什么" class="headerlink" title="git干什么"></a>git干什么</h1><h5 id="干什么"><a href="#干什么" class="headerlink" title="干什么"></a>干什么</h5><ul>
+<li>分布式</li>
+<li>版本控制</li>
+</ul>
+<h5 id="为什么版本控制"><a href="#为什么版本控制" class="headerlink" title="为什么版本控制"></a>为什么版本控制</h5><p>保留之前的版本，方便项目的回滚以及修改</p>
+<h5 id="版本控制历史"><a href="#版本控制历史" class="headerlink" title="版本控制历史"></a>版本控制历史</h5><ul>
+<li>文件夹拷贝</li>
+<li>本地版本控制</li>
+<li>集中式版本控制</li>
+<li>分布式版本控制</li>
+</ul>
+<h1 id="配置基本git"><a href="#配置基本git" class="headerlink" title="配置基本git"></a>配置基本git</h1><h3 id="cmd基本操作"><a href="#cmd基本操作" class="headerlink" title="cmd基本操作"></a>cmd基本操作</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd 文件名&#x2F;文件夹名</td>
+<td>进入</td>
+</tr>
+<tr>
+<td>cd(空格) ..</td>
+<td>回退</td>
+</tr>
+<tr>
+<td>mkdir 文件名</td>
+<td>创建文件夹</td>
+</tr>
+<tr>
+<td>~ &#x2F;文件名</td>
+<td>查找文件</td>
+</tr>
+<tr>
+<td>shift+insert+fn</td>
+<td>粘贴内容</td>
+</tr>
+<tr>
+<td>长按Q</td>
+<td>退出编辑模式</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>查看当前文件夹下有什么文件</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>查看当前分支路径</td>
+</tr>
+<tr>
+<td>cat 文件名</td>
+<td>查看文件内容</td>
+</tr>
+</tbody></table>
+<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p>地址：<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<h3 id="添加个人信息配置"><a href="#添加个人信息配置" class="headerlink" title="添加个人信息配置"></a>添加个人信息配置</h3><ul>
+<li><p>打开<strong>Git Bash</strong></p>
+</li>
+<li><p>添加用户名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加邮箱</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看用户名和邮箱</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br><span class="line">或者</span><br><span class="line">git config list</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="添加密钥"><a href="#添加密钥" class="headerlink" title="添加密钥"></a>添加密钥</h3><ol>
+<li><p>生成密钥</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮箱地址&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后连续enter通过，获得.ssh文件<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_154759.png" alt="屏幕截图 2022-02-06 154759"></p>
+</li>
+<li><p>在本地添加私钥</p>
+<ul>
+<li><p>路径到达.ssh文件</p>
+</li>
+<li><p>开启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加私钥,执行id_rsa文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add id_rsa文件</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>在githud添加公钥</p>
+<ul>
+<li>找到.ssh文件中的<strong>id_rsa.pub</strong></li>
+<li>复制id_rsa.pub中的内容</li>
+<li>前往个人页面,并且点击Setting</li>
+<li><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160112.png" alt="屏幕截图 2022-02-06 160112"></li>
+<li>找到左侧的SSH and GPG keys</li>
+<li><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160210.png" alt="屏幕截图 2022-02-06 160210"></li>
+<li>点击绿色按钮New SSH key<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160451.png" alt="屏幕截图 2022-02-06 160451"></li>
+<li>将内容复制到框内<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-06_160353.png" alt="屏幕截图 2022-02-06 160353"></li>
+</ul>
+</li>
+</ol>
+<h1 id="简单操作git"><a href="#简单操作git" class="headerlink" title="简单操作git"></a>简单操作git</h1><h3 id="git基本命令"><a href="#git基本命令" class="headerlink" title="git基本命令"></a>git基本命令</h3><ul>
+<li>文件名可以是<strong>具体文件名</strong>，也可以通过输入 <strong>. 来选择所有文件</strong></li>
+<li>回滚操作时候获得<strong>版本号</strong>，可以通过<strong>git log</strong> </li>
+<li>当我们执行回滚后，我们后悔执行这个回滚，可以执行返回操作：<ul>
+<li>首先执行<strong>git reflog</strong> 查找要返回操作版本号</li>
+<li>执行返回(也可以说是回滚) <strong>git reset –hard 返回版本号</strong></li>
+</ul>
+</li>
+<li>查看文件在工作区情况，通过<strong>git status</strong><ul>
+<li>红色：未被git管理（一般为修改&#x2F;新增文件）</li>
+<li>绿色：已经被git管理</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Liust1918.githud.io/image/git%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4.svg" alt="git基本命令"></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><h4 id="上传修改的文件并且设置版本"><a href="#上传修改的文件并且设置版本" class="headerlink" title="上传修改的文件并且设置版本"></a>上传修改的文件并且设置版本</h4><ol>
+<li><p>修改index.html文件</p>
+</li>
+<li><p>通过git status查看</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_170540.png" alt="屏幕截图 2022-02-08 170540"></p>
+</li>
+<li><p>git add index.html添加到暂存区</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_170649.png" alt="屏幕截图 2022-02-08 170649"></p>
+</li>
+<li><p>通过git status查看 是否提交暂存区<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171029.png" alt="屏幕截图 2022-02-08 171029"></p>
+</li>
+<li><p>git commit -m “提交版本” 提交版本</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171229.png" alt="屏幕截图 2022-02-08 171229"></p>
+</li>
+<li><p>通过git log 得知是否提交版本成功<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_171249.png" alt="屏幕截图 2022-02-08 171249"></p>
+</li>
+</ol>
+<h4 id="从本地版本库回滚到暂存区"><a href="#从本地版本库回滚到暂存区" class="headerlink" title="从本地版本库回滚到暂存区"></a>从本地版本库回滚到暂存区</h4><ol>
+<li><p>通过git log查看版本号</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172008.png" alt="屏幕截图 2022-02-08 172008"></p>
+</li>
+<li><p>git reset –soft 版本号  回滚到上个版本<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172124.png" alt="屏幕截图 2022-02-08 172124"></p>
+</li>
+<li><p>通过git log 检测是否回滚成功<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172202.png" alt="屏幕截图 2022-02-08 172202"></p>
+</li>
+</ol>
+<h4 id="将文件从暂存区回滚到工作区"><a href="#将文件从暂存区回滚到工作区" class="headerlink" title="将文件从暂存区回滚到工作区"></a>将文件从暂存区回滚到工作区</h4><ol>
+<li><p>通过git reset HEAD 回滚</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172323.png" alt="屏幕截图 2022-02-08 172323"></p>
+</li>
+<li><p>通过git status检测是否回滚成功<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172351.png" alt="屏幕截图 2022-02-08 172351"></p>
+</li>
+</ol>
+<h4 id="将修改-x2F-新镇的文件继续回退到之前的状态"><a href="#将修改-x2F-新镇的文件继续回退到之前的状态" class="headerlink" title="将修改&#x2F;新镇的文件继续回退到之前的状态"></a>将修改&#x2F;新镇的文件继续回退到之前的状态</h4><ul>
+<li>已修改的文件回退到未修改的时候</li>
+<li>新增文件则会删除</li>
+</ul>
+<ol>
+<li>通过 <strong>git chechkout – 文件名</strong> <img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_172630.png" alt="屏幕截图 2022-02-08 172630"></li>
+<li>通过git status或者直接看文件是否存在&#x2F;返回修改</li>
+</ol>
+<h4 id="将上面的操作进行回退"><a href="#将上面的操作进行回退" class="headerlink" title="将上面的操作进行回退"></a>将上面的操作进行回退</h4><p>当我们对于上面的回滚感觉后悔，想返回，可以这样操作：</p>
+<ol>
+<li>通过git reflog 查找操作版本号<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173137.png" alt="屏幕截图 2022-02-08 173137"></li>
+<li>git reset –hard 版本号 全部回滚<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173338.png" alt="屏幕截图 2022-02-08 173338"></li>
+<li>检查当前版本git log<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-08_173452.png" alt="屏幕截图 2022-02-08 173452"></li>
+</ol>
+<h1 id="操作分支"><a href="#操作分支" class="headerlink" title="操作分支"></a>操作分支</h1><h2 id="为什么要有分支"><a href="#为什么要有分支" class="headerlink" title="为什么要有分支"></a>为什么要有分支</h2><h3 id="不用分支"><a href="#不用分支" class="headerlink" title="不用分支"></a>不用分支</h3><p>按照正常来说，我们一个功能一个功能开发，但是如果前面的功能出现bug，我们需要回滚到之前版本，那么中间写的各种功能都会报废.当然我可以一份保存，一份回滚，但是这样太蠢了.</p>
+<p><img src="/Liust1918.githud.io/image/%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8git.drawio-16443838374551.svg" alt="为什么用git.drawio"></p>
+<h3 id="引入分支"><a href="#引入分支" class="headerlink" title="引入分支"></a>引入分支</h3><h5 id="分支原理"><a href="#分支原理" class="headerlink" title="分支原理"></a>分支原理</h5><ul>
+<li>我们每个版本提交，都<strong>只会保存修改&#x2F;新增部分</strong>.</li>
+<li>然后用指针指向前一个版本，也就是在之前版本的基础上进行修改&#x2F;新增功能</li>
+</ul>
+<h5 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h5><ul>
+<li>master分支：功能正式上线</li>
+<li>bug分支：紧急修复bug</li>
+<li>dev分支：开发其他功能</li>
+</ul>
+<p>当我们主分支开发到功能3的时候，我们分出dev分支，负责开发新功能，当我们开发到功能5的时候，发布的功能3出现bug，需要我们修改bug，如果没有分支，那么我们只能从功能5直接回滚到功能3来修改bug，这样虽然可以修复bug，但是功能5和功能4都没了，而且后面的开发也停下来了.当我们拥有分支后，我们分成dev分支，直接在功能3的基础上一直开发，再新出bug分支，对功能3进行修复，这个也是修复功能3 C7，后面我们只要把C7和C3分支进行合并，这样可以既修复bug，又不影响开发其他功能.</p>
+<p><img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF.drawio.svg" alt="分支.drawio"></p>
+<h2 id="分支实际操作"><a href="#分支实际操作" class="headerlink" title="分支实际操作"></a>分支实际操作</h2><ul>
+<li><p>查看所有分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建新分支（在本版本分出）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 新分支名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将其他分支合并到本分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 其他分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d 分支名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>继续合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --continue</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="合并分支冲突"><a href="#合并分支冲突" class="headerlink" title="合并分支冲突"></a>合并分支冲突</h2><p>当我们将两个分支合并的时候，会显示如下错误：</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_135236.png" alt="屏幕截图 2022-02-09 135236"></p>
+<p>这种就是合并分支冲突.</p>
+<h3 id="为什么产生合并分支冲突"><a href="#为什么产生合并分支冲突" class="headerlink" title="为什么产生合并分支冲突"></a>为什么产生合并分支冲突</h3><ul>
+<li><p>在两个分支中，<strong>修改的代码为同一行的时候</strong></p>
+</li>
+<li><p>git无法分辨选择那个修改，在源文件中就会出现如下：</p>
+<ul>
+<li><p>修完bug的master分支:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能3（改了bug）<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能4（75%）改了bug<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dev分支：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能4（100%）<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>产生冲突后：(功能4和功能3修改了同一行代码)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能3（改了bug）<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能4（75%）改了bug<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">=======</span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能4（100%）<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="修复冲突"><a href="#修复冲突" class="headerlink" title="修复冲突"></a>修复冲突</h3><p>在上面的产生的冲突源文件中，选择其中一行，其他删除就行了：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能3（改了bug）<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能4（75%）改了bug<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">=======</span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能4（100%）<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上面为master分支修改的内容</li>
+<li>下面为dev分支修改的内容</li>
+</ul>
+<ol>
+<li><p>假设我们选择dev分支，那么进行如下修改：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>功能4（100%）<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --continue</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="一般分支规定"><a href="#一般分支规定" class="headerlink" title="一般分支规定"></a>一般分支规定</h2><ul>
+<li>master分支：一般为正式上线的，不要乱动</li>
+<li>dev分支：开发功能</li>
+</ul>
+<h1 id="githud创建仓库"><a href="#githud创建仓库" class="headerlink" title="githud创建仓库"></a>githud创建仓库</h1><p>githud为一个大型项目托管网站，你可以将项目上传到这里，然后在各个地方下载你的项目(前提你要上传)。</p>
+<p>也是一个众多开源项目的网站.</p>
+<h2 id="创建githud仓库"><a href="#创建githud仓库" class="headerlink" title="创建githud仓库"></a>创建githud仓库</h2><ol>
+<li><p>注册githud账号</p>
+</li>
+<li><p>点击头像，点击Your repositories</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155346.png" alt="屏幕截图 2022-02-09 155346"></p>
+</li>
+<li><p>点击绿色New 创建仓库</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155400.png" alt="屏幕截图 2022-02-09 155400"></p>
+</li>
+<li><p>填写资料</p>
+<ul>
+<li>填写项目名</li>
+<li>填写项目描述</li>
+<li>项目是否开发</li>
+<li>添加其他文件<ul>
+<li>添加README.md</li>
+<li>添加.gitignore</li>
+<li>添加通行证（类似各种开源声明）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155410.png" alt="屏幕截图 2022-02-09 155410"></p>
+</li>
+<li><p>点击Create repository</p>
+</li>
+</ol>
+<h2 id="上传-x2F-下载项目"><a href="#上传-x2F-下载项目" class="headerlink" title="上传&#x2F;下载项目"></a>上传&#x2F;下载项目</h2><h5 id="如何找到仓库地址"><a href="#如何找到仓库地址" class="headerlink" title="如何找到仓库地址"></a>如何找到仓库地址</h5><p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-09_155251.png" alt="屏幕截图 2022-02-09 155251"></p>
+<h5 id="上传项目"><a href="#上传项目" class="headerlink" title="上传项目"></a>上传项目</h5><ul>
+<li><p>添加仓库连接的别名(默认已经存在)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 仓库地址</span><br><span class="line">//origin代表仓库地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上传本地仓库的某一分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin 分支</span><br><span class="line">//将本分支上传到origin的远程仓库</span><br><span class="line">//设置origin为默认地址</span><br><span class="line"></span><br><span class="line">git push origin 分支</span><br><span class="line">//将本分支上传到origin的远程仓库</span><br><span class="line"></span><br><span class="line">git push </span><br><span class="line">//将当前分支上传到默认地址</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="下拉项目"><a href="#下拉项目" class="headerlink" title="下拉项目"></a>下拉项目</h5><ul>
+<li><p>将本地分支切换成对应远程仓库分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 本地对应下拉分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将远程仓库更新到本地仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git pull -u origin 分支</span><br><span class="line">//将远程仓库上的指定分支下拉</span><br><span class="line">//并且将origin设置为默认地址</span><br><span class="line"></span><br><span class="line">git pull origin 分支</span><br><span class="line">//将地址为origin的远程仓库中的分支下拉</span><br><span class="line"></span><br><span class="line">git pull</span><br><span class="line">//向默认地址拉项目</span><br><span class="line">//并且把当前分支作为下拉分支</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="克隆项目下来"><a href="#克隆项目下来" class="headerlink" title="克隆项目下来"></a>克隆项目下来</h5><ul>
+<li><p>克隆远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 仓库地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>克隆下来后的分支问题</p>
+<ul>
+<li><p>当我们拉下项目后，会发现只有一个master分支.</p>
+</li>
+<li><p>可以<strong>克隆其他分支</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 远程分支 origin/远程分支</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="实际操作项目"><a href="#实际操作项目" class="headerlink" title="实际操作项目"></a>实际操作项目</h2><h4 id="第一次到公司下拉项目"><a href="#第一次到公司下拉项目" class="headerlink" title="第一次到公司下拉项目"></a>第一次到公司下拉项目</h4><ol>
+<li><p>克隆远程仓库代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 远程仓库地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到dev分支进行开发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把master分支合并到dev(<strong>仅一次就行</strong>)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开发(修改代码)</p>
+</li>
+<li><p>提交代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;版本内容&quot;</span><br><span class="line">git push origin dev</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="在家开发"><a href="#在家开发" class="headerlink" title="在家开发"></a>在家开发</h4><ol>
+<li><p>切换到dev分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>继续开发</p>
+</li>
+<li><p>提交代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;版本内容&quot;</span><br><span class="line">git push origin dev</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="在公司开发"><a href="#在公司开发" class="headerlink" title="在公司开发"></a>在公司开发</h4><ol>
+<li><p>切换到dev分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>继续开发</p>
+</li>
+<li><p>提交代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;版本内容&quot;</span><br><span class="line">git push origin dev</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>然后循环在家在公司开发</p>
+<h4 id="开发完毕"><a href="#开发完毕" class="headerlink" title="开发完毕"></a>开发完毕</h4><ol>
+<li><p>切换master分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将dev分支合并到master分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换dev代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将master分支合并到dev分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin dev</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="深挖git-pull"><a href="#深挖git-pull" class="headerlink" title="深挖git pull"></a>深挖git pull</h1><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>当我们从远程仓库下拉代码的时候，会和本地代码有冲突，本地冲突分支会把远程分支合并在一起.<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_155751.png" alt="屏幕截图 2022-02-11 155751"></p>
+<h3 id="两个命令"><a href="#两个命令" class="headerlink" title="两个命令"></a>两个命令</h3><p>git pull其实里面分为两个命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git pull origin 分支</span><br><span class="line">======================</span><br><span class="line">git fetch origin 分支</span><br><span class="line">git merge origin/分支</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="命令解释"><a href="#命令解释" class="headerlink" title="命令解释"></a>命令解释</h3><ul>
+<li><p>将远程分支更新到本地</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin 远程分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将远程分支合并&#x2F;变基到本分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/远程分支</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>![git基本命令（含git pull）.drawio](&#x2F;image&#x2F;git基本命令（含git pull）.drawio.svg)</p>
+<h1 id="变基git-rebase"><a href="#变基git-rebase" class="headerlink" title="变基git rebase"></a>变基git rebase</h1><p>变基：<strong>本质上是使git记录简洁</strong></p>
+<h2 id="场景一"><a href="#场景一" class="headerlink" title="场景一"></a>场景一</h2><h3 id="场景介绍"><a href="#场景介绍" class="headerlink" title="场景介绍"></a>场景介绍</h3><p>(多个版本合并)</p>
+<p>当我们开发的时候，提交了一堆版本，我们想经某些版本合并成一个版本，这样可以让版本记录更加简洁.</p>
+<ul>
+<li><strong>这些版本不能有已经上传到远程仓库的版本</strong></li>
+</ul>
+<h3 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h3><h5 id="原本版本"><a href="#原本版本" class="headerlink" title="原本版本"></a>原本版本</h5><p>有v1,v2到v5版本,我希望将v3到v5合并</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_171444.png" alt="屏幕截图 2022-02-11 171444"></p>
+<h5 id="使用git-rabse"><a href="#使用git-rabse" class="headerlink" title="使用git rabse"></a>使用git rabse</h5><p>范围区分：</p>
+<ul>
+<li><p><strong>从HEAD到对应版本号</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i 版本号</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>HEAD~合并版本数量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~数量</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>例：</p>
+<p>执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~3</span><br><span class="line">表示 从HEAD开始计算，将3个版本合并</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="合并版本并且添加合并后的描述"><a href="#合并版本并且添加合并后的描述" class="headerlink" title="合并版本并且添加合并后的描述"></a>合并版本并且添加合并后的描述</h5><ol>
+<li>将下面两个<strong>pick改成s</strong></li>
+<li><strong>Ctrl+O</strong>保存</li>
+<li><strong>Ctrl+X</strong>退出</li>
+<li><strong>修改合并后的版本描述</strong></li>
+<li>Ctrl+O保存</li>
+<li>Ctrl+X退出</li>
+</ol>
+<p>例：</p>
+<ul>
+<li>原本</li>
+</ul>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_165746.png" alt="屏幕截图 2022-02-11 165746"></p>
+<ul>
+<li>修改</li>
+</ul>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_165731.png" alt="屏幕截图 2022-02-11 165731"></p>
+<ul>
+<li><p>修改合并后版本描述(框中修改)</p>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_170743.png" alt="屏幕截图 2022-02-11 170743"></p>
+</li>
+</ul>
+<h5 id="查看结果"><a href="#查看结果" class="headerlink" title="查看结果"></a>查看结果</h5><ul>
+<li>git log查看</li>
+</ul>
+<p><img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-11_171413.png" alt="屏幕截图 2022-02-11 171413"></p>
+<h2 id="场景二"><a href="#场景二" class="headerlink" title="场景二"></a>场景二</h2><h3 id="场景描述"><a href="#场景描述" class="headerlink" title="场景描述"></a>场景描述</h3><p>(将分叉变为直线)</p>
+<p>当我们进行两个分支合并的时候，我们会在两条不同的分支合并在一条分支上(也就是<strong>产生分叉</strong>)，但是我不希望这样做，我希望直接就在用同一条分支：</p>
+<p><img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E6%9C%AA%E7%9B%B4%E7%BA%BF.drawio.svg" alt="分支未直线.drawio"></p>
+<h3 id="具体操作-1"><a href="#具体操作-1" class="headerlink" title="具体操作"></a>具体操作</h3><ol>
+<li><p>原来</p>
+</li>
+<li><p>在dev分支执行git rebase</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>假设出现Merge conflict冲突错误<img src="/Liust1918.githud.io/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE_2022-02-12_143426.png" alt="屏幕截图 2022-02-12 143426"></p>
+<ul>
+<li><p>进入源文件解决冲突</p>
+</li>
+<li><p>执行git add</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>继续变基</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换回master分支，执行git merge dev</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log --graph</span><br><span class="line">将log图形化</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Liust1918.githud.io/image/image-20220212143658214.png" alt="image-20220212143658214"></p>
+</li>
+</ol>
+<h3 id="原理描述"><a href="#原理描述" class="headerlink" title="原理描述"></a>原理描述</h3><h4 id="git-rebase的本质以及和git-merge相比"><a href="#git-rebase的本质以及和git-merge相比" class="headerlink" title="git rebase的本质以及和git merge相比"></a>git rebase的本质以及和git merge相比</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//在A分支</span><br><span class="line">git rebase B分支</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将A分支复制到一份到B分支</li>
+<li>并且A分支会指向复制那份的最前面</li>
+</ul>
+<h5 id="一般合并"><a href="#一般合并" class="headerlink" title="一般合并"></a>一般合并</h5><p><img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF.drawio.svg" alt="分支直线.drawio"></p>
+<h5 id="变基过程"><a href="#变基过程" class="headerlink" title="变基过程"></a>变基过程</h5><ol>
+<li>复制一份并且指向<img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF1.drawio.svg" alt="分支直线1.drawio"></li>
+<li>废弃之前的<img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF11.drawio.svg" alt="分支直线1.drawio (1)"></li>
+<li>变成一条直线<img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF12.drawio.svg" alt="分支直线1.drawio (2)"></li>
+</ol>
+<h4 id="操作过程图解"><a href="#操作过程图解" class="headerlink" title="操作过程图解"></a>操作过程图解</h4><ol>
+<li>原本样子<img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF13.drawio.svg" alt="分支直线1.drawio (3)"></li>
+<li>切换dev分支 git rebase master<img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF14.drawio.svg" alt="分支直线1.drawio (4)"></li>
+<li>切换master分支 git merge dev<img src="/Liust1918.githud.io/image/%E5%88%86%E6%94%AF%E7%9B%B4%E7%BA%BF15.drawio.svg" alt="分支直线1.drawio (5)"></li>
+<li>完成</li>
+</ol>
+<h2 id="场景三"><a href="#场景三" class="headerlink" title="场景三"></a>场景三</h2><h3 id="背景描述"><a href="#背景描述" class="headerlink" title="背景描述"></a>背景描述</h3><p>从远程仓库的分支下拉，会和本地分支进行合并，从而产生分支.</p>
+<p>我们需要消除这个分支.</p>
+<h3 id="具体操作-2"><a href="#具体操作-2" class="headerlink" title="具体操作"></a>具体操作</h3><ol>
+<li><p>在本地分支</p>
+</li>
+<li><p>执行git fetch</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch orign 远程分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行变基git rebase</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase origin/远程分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成</p>
+</li>
+</ol>
+<h1 id="给开源项目贡献代码"><a href="#给开源项目贡献代码" class="headerlink" title="给开源项目贡献代码"></a>给开源项目贡献代码</h1><ol>
+<li>点击项目的fork</li>
+<li>在自己仓库找到fork的项目</li>
+<li>clone下来开发</li>
+<li>开发完就PR给原项目</li>
+</ol>
+<h1 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h1><ol>
+<li><p>本项目配置(路径:项目&#x2F;.git&#x2F;config)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --local user.name=&quot;名&quot;</span><br><span class="line">git config --local user.email=&quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>全局配置(路径:~&#x2F;.gitconfig)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name=&quot;名&quot;</span><br><span class="line">git config --global user.email=&quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>系统配置(路径:&#x2F;etc&#x2F;.gitconfig)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --system user.name=&quot;名&quot;</span><br><span class="line">git config --system user.email=&quot;邮箱&quot;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h1><p>可以将某些文件不被git管理,例如各种库，没有必要被管理.</p>
+<ol>
+<li><p>创建**.gitignore**文件</p>
+</li>
+<li><p>填写内容</p>
+<ul>
+<li><p>具体文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后缀文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>忽略路径下文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>取反</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!a.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abc[a|b|c].txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>忽略本身</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.gitignore</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<h1 id="向项目提问题issues"><a href="#向项目提问题issues" class="headerlink" title="向项目提问题issues"></a>向项目提问题issues</h1><p>当你发现项目有bug，或者文档错误等等，想要询问项目作者本人.可以使用issues</p>
+<h5 id="提问者"><a href="#提问者" class="headerlink" title="提问者"></a>提问者</h5><ol>
+<li>点击<strong>New issue</strong></li>
+<li>书写标题和内容</li>
+<li>选择<strong>Labels</strong> <ul>
+<li>将提问分类</li>
+</ul>
+</li>
+<li>选择<strong>Assignees</strong><ul>
+<li>选择要提问的人</li>
+</ul>
+</li>
+<li>提交</li>
+</ol>
+<h1 id="书写wiki"><a href="#书写wiki" class="headerlink" title="书写wiki"></a>书写wiki</h1><p>你可以给你的项目添加wiki，来说明你的项目.</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>git和githud</p><p><a href="https://liust1918.github.io/Liust1918.githud.io/2022/12/03/git和githud/">https://liust1918.github.io/Liust1918.githud.io/2022/12/03/git和githud/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-12-03</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-12-03</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Liust1918.githud.io/tags/git/">git</a><a class="link-muted mr-2" rel="tag" href="/Liust1918.githud.io/tags/githud/">githud</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/Liust1918.githud.io/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Liust1918.githud.io/2022/12/03/sb/"><span class="level-item">C语言入门</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Liust1918"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Liust1918</p><p class="is-size-6 is-block">Web Developer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Ice Earth</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/Liust1918.githud.io/archives"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/Liust1918.githud.io/categories"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/Liust1918.githud.io/tags"><p class="title">4</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Liust1918" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/Liust1918.githud.io/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#使用Git-Githud"><span class="level-left"><span class="level-item">1</span><span class="level-item">使用Git+Githud</span></span></a></li><li><a class="level is-mobile" href="#git干什么"><span class="level-left"><span class="level-item">2</span><span class="level-item">git干什么</span></span></a></li><li><a class="level is-mobile" href="#配置基本git"><span class="level-left"><span class="level-item">3</span><span class="level-item">配置基本git</span></span></a><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#cmd基本操作"><span class="level-left"><span class="level-item">3.1.1</span><span class="level-item">cmd基本操作</span></span></a></li><li><a class="level is-mobile" href="#安装git"><span class="level-left"><span class="level-item">3.1.2</span><span class="level-item">安装git</span></span></a></li><li><a class="level is-mobile" href="#添加个人信息配置"><span class="level-left"><span class="level-item">3.1.3</span><span class="level-item">添加个人信息配置</span></span></a></li><li><a class="level is-mobile" href="#添加密钥"><span class="level-left"><span class="level-item">3.1.4</span><span class="level-item">添加密钥</span></span></a></li></ul></ul></li><li><a class="level is-mobile" href="#简单操作git"><span class="level-left"><span class="level-item">4</span><span class="level-item">简单操作git</span></span></a><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#git基本命令"><span class="level-left"><span class="level-item">4.1.1</span><span class="level-item">git基本命令</span></span></a></li><li><a class="level is-mobile" href="#例子"><span class="level-left"><span class="level-item">4.1.2</span><span class="level-item">例子</span></span></a></li></ul></ul></li><li><a class="level is-mobile" href="#操作分支"><span class="level-left"><span class="level-item">5</span><span class="level-item">操作分支</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#为什么要有分支"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">为什么要有分支</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#不用分支"><span class="level-left"><span class="level-item">5.1.1</span><span class="level-item">不用分支</span></span></a></li><li><a class="level is-mobile" href="#引入分支"><span class="level-left"><span class="level-item">5.1.2</span><span class="level-item">引入分支</span></span></a></li></ul></li><li><a class="level is-mobile" href="#分支实际操作"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">分支实际操作</span></span></a></li><li><a class="level is-mobile" href="#合并分支冲突"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">合并分支冲突</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#为什么产生合并分支冲突"><span class="level-left"><span class="level-item">5.3.1</span><span class="level-item">为什么产生合并分支冲突</span></span></a></li><li><a class="level is-mobile" href="#修复冲突"><span class="level-left"><span class="level-item">5.3.2</span><span class="level-item">修复冲突</span></span></a></li></ul></li><li><a class="level is-mobile" href="#一般分支规定"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">一般分支规定</span></span></a></li></ul></li><li><a class="level is-mobile" href="#githud创建仓库"><span class="level-left"><span class="level-item">6</span><span class="level-item">githud创建仓库</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#创建githud仓库"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">创建githud仓库</span></span></a></li><li><a class="level is-mobile" href="#上传-x2F-下载项目"><span class="level-left"><span class="level-item">6.2</span><span class="level-item">上传/下载项目</span></span></a></li><li><a class="level is-mobile" href="#实际操作项目"><span class="level-left"><span class="level-item">6.3</span><span class="level-item">实际操作项目</span></span></a></li></ul></li><li><a class="level is-mobile" href="#深挖git-pull"><span class="level-left"><span class="level-item">7</span><span class="level-item">深挖git pull</span></span></a><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#场景"><span class="level-left"><span class="level-item">7.1.1</span><span class="level-item">场景</span></span></a></li><li><a class="level is-mobile" href="#两个命令"><span class="level-left"><span class="level-item">7.1.2</span><span class="level-item">两个命令</span></span></a></li><li><a class="level is-mobile" href="#命令解释"><span class="level-left"><span class="level-item">7.1.3</span><span class="level-item">命令解释</span></span></a></li></ul></ul></li><li><a class="level is-mobile" href="#变基git-rebase"><span class="level-left"><span class="level-item">8</span><span class="level-item">变基git rebase</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#场景一"><span class="level-left"><span class="level-item">8.1</span><span class="level-item">场景一</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#场景介绍"><span class="level-left"><span class="level-item">8.1.1</span><span class="level-item">场景介绍</span></span></a></li><li><a class="level is-mobile" href="#具体操作"><span class="level-left"><span class="level-item">8.1.2</span><span class="level-item">具体操作</span></span></a></li></ul></li><li><a class="level is-mobile" href="#场景二"><span class="level-left"><span class="level-item">8.2</span><span class="level-item">场景二</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#场景描述"><span class="level-left"><span class="level-item">8.2.1</span><span class="level-item">场景描述</span></span></a></li><li><a class="level is-mobile" href="#具体操作-1"><span class="level-left"><span class="level-item">8.2.2</span><span class="level-item">具体操作</span></span></a></li><li><a class="level is-mobile" href="#原理描述"><span class="level-left"><span class="level-item">8.2.3</span><span class="level-item">原理描述</span></span></a></li></ul></li><li><a class="level is-mobile" href="#场景三"><span class="level-left"><span class="level-item">8.3</span><span class="level-item">场景三</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#背景描述"><span class="level-left"><span class="level-item">8.3.1</span><span class="level-item">背景描述</span></span></a></li><li><a class="level is-mobile" href="#具体操作-2"><span class="level-left"><span class="level-item">8.3.2</span><span class="level-item">具体操作</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#给开源项目贡献代码"><span class="level-left"><span class="level-item">9</span><span class="level-item">给开源项目贡献代码</span></span></a></li><li><a class="level is-mobile" href="#其他配置"><span class="level-left"><span class="level-item">10</span><span class="level-item">其他配置</span></span></a></li><li><a class="level is-mobile" href="#忽略文件"><span class="level-left"><span class="level-item">11</span><span class="level-item">忽略文件</span></span></a></li><li><a class="level is-mobile" href="#向项目提问题issues"><span class="level-left"><span class="level-item">12</span><span class="level-item">向项目提问题issues</span></span></a></li><li><a class="level is-mobile" href="#书写wiki"><span class="level-left"><span class="level-item">13</span><span class="level-item">书写wiki</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/Liust1918.githud.io/js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com/Liust1918" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Githud</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/C%E8%AF%AD%E8%A8%80/"><span class="level-start"><span class="level-item">C语言</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T15:14:48.000Z">2022-12-03</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/03/git%E5%92%8Cgithud/">git和githud</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/git/">git</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T08:56:40.000Z">2022-12-03</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/03/sb/">C语言入门</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T03:18:07.000Z">2022-12-03</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/03/My-New-Post/">Hexo常用操作</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Liust1918.githud.io/archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/"><span class="tag">C语言入门</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/githud/"><span class="tag">githud</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="adsense"><div class="card-content"><div class="menu"><h3 class="menu-label">广告</h3><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="liust" data-ad-slot="1918" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/Liust1918.githud.io/"><img src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/Liust1918.githud.io/js/column.js"></script><script src="/Liust1918.githud.io/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/Liust1918.githud.io/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/Liust1918.githud.io/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/Liust1918.githud.io/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/Liust1918.githud.io/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
