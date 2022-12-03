@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>java设计模式 - Hexo</title><link rel="manifest" href="/Liust1918.githud.io/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/Battlerfiled3.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="设计模式"><meta property="og:type" content="blog"><meta property="og:title" content="java设计模式"><meta property="og:url" content="https://liust1918.github.io/Liust1918.githud.io/2022/12/04/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="设计模式"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/img/og_image.png"><meta property="article:published_time" content="2022-12-03T16:24:55.000Z"><meta property="article:modified_time" content="2022-12-03T16:26:47.015Z"><meta property="article:author" content="John Doe"><meta property="article:tag" content="java"><meta property="article:tag" content="技术书"><meta property="article:tag" content="设计模式"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://liust1918.github.io/Liust1918.githud.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://liust1918.github.io/Liust1918.githud.io/2022/12/04/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"},"headline":"java设计模式","image":["https://liust1918.github.io/Liust1918.githud.io/img/og_image.png"],"datePublished":"2022-12-03T16:24:55.000Z","dateModified":"2022-12-03T16:26:47.015Z","author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://liust1918.github.io/img/Battlerfiled3.jpg"}},"description":"设计模式"}</script><link rel="canonical" href="https://liust1918.github.io/Liust1918.githud.io/2022/12/04/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><link rel="icon" href="/Liust1918.githud.io/img/Battlerfiled3.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/Liust1918.githud.io/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><script data-ad-client="liust" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Liust1918.githud.io/"><img src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Liust1918.githud.io/">主页(Home)</a><a class="navbar-item" href="/Liust1918.githud.io/archives">文章(Archives)</a><a class="navbar-item" href="/Liust1918.githud.io/categories">类型(Categories)</a><a class="navbar-item" href="/Liust1918.githud.io/tags">标签(Tags)</a><a class="navbar-item" href="/Liust1918.githud.io/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-12-03T16:24:55.000Z" title="2022/12/4 00:24:55">2022-12-04</time>发表</span><span class="level-item"><time dateTime="2022-12-03T16:26:47.015Z" title="2022/12/4 00:26:47">2022-12-04</time>更新</span><span class="level-item"><a class="link-muted" href="/Liust1918.githud.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></span><span class="level-item">1 小时读完 (大约7116个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">java设计模式</h1><div class="content"><h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><span id="more"></span>
+
+<h3 id="类的关系"><a href="#类的关系" class="headerlink" title="类的关系"></a>类的关系</h3><ol>
+<li><p><strong>关联关系</strong></p>
+<hr>
+<p>一个类的对象是另一个类的属性</p>
+<ol>
+<li><p>单向关联(一个类的对象是另一类的属性)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="keyword">private</span>  B b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">B</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>双向关联(对象相互是对方的属性)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="keyword">private</span>  B b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">B</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> A a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自关联(自己类就是自己的属性)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">C</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> C c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>聚合关系(一个部分一个整体，部分脱离了整体也可独立存在)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">E</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> D d;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setD</span><span class="params">(D d)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.d = d;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">E</span><span class="params">(D d)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.d = d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不能从代码形式上判断聚合/组合而从语义上判断</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组合关系(类之间的部分和整体关系,但是是共生关系)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">D</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> E e;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">D</span><span class="params">()</span> &#123;</span><br><span class="line">        e=<span class="keyword">new</span> <span class="title class_">E</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p><strong>依赖关系</strong>(使用关系&#x3D;&#x3D;&gt;某个类的方法使用另一个类的对象作为参数)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">F</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">F</span><span class="params">(E e)</span> &#123;</span><br><span class="line">        e.Run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//通常是调用另一个类的静态方法/局部变量</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>泛化关系</strong>(类的继承)</p>
+</li>
+<li><p><strong>接口与实现关系</strong>(接口的实现)</p>
+</li>
+</ol>
+<h3 id="面向对象设计"><a href="#面向对象设计" class="headerlink" title="面向对象设计"></a>面向对象设计</h3><h4 id="类的概念"><a href="#类的概念" class="headerlink" title="类的概念"></a>类的概念</h4><ol>
+<li><strong>继承</strong>(类继承extends,接口implements)</li>
+<li><strong>多态</strong>(父类整个方法不实现,由子类继承并实现方法,得到不同的结果)</li>
+<li><strong>重写</strong>（父类方法实现，子类继承父类并且重写上面那个方法）</li>
+<li><strong>重载</strong>(类中有重名的方法，但是参数(传入值s)不一样)</li>
+</ol>
+<h4 id="面向对象设计的目标"><a href="#面向对象设计的目标" class="headerlink" title="面向对象设计的目标"></a>面向对象设计的目标</h4><p>实现支持可维护性得到复用.</p>
+<h4 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h4><ul>
+<li><p><strong>单一职责原则</strong>:一个对象只包含单一的职责,并且被封装在一个类中</p>
+</li>
+<li><p><strong>开闭原则</strong>:对拓展开发,对修改关闭.(不给改,但是给拓展)</p>
+</li>
+<li><p><strong>里氏代换</strong>：</p>
+<hr>
+<p><strong>将父类对象替换成子类对象,不会报错和异常,但是反过来不行.</strong></p>
+<p>(所以如果能够使用基类对象,那么一定能够使用其子类对象)</p>
+<p>分析:</p>
+<ol>
+<li>子类必须实现父类的抽象方法,但是不能重写&#x2F;覆盖父类的其他方法.</li>
+<li>子类可以增加自己特有方法</li>
+<li>当子类覆盖或实现父类的方法时,方法的形参要比父类方法的输入参数(可以理解为传入参数类型)要宽松，反之不行.</li>
+<li>当子类的方法实现父类的抽象方法时,方法的返回值比父类严格,反之不行.</li>
+</ol>
+</li>
+<li><p><strong>依赖倒装</strong>:针对接口编程,不要针对实现编程</p>
+</li>
+<li><p><strong>接口隔离</strong>:一个接口太多就应该分割成很多各小接口,并且符合上面的单一职责原则</p>
+</li>
+<li><p><strong>合成复用</strong>:用组合&#x2F;聚合关系来获得其他类的功能，少用继承.</p>
+</li>
+<li><p><strong>迪米特法则</strong>：</p>
+<hr>
+<p>定义(了解):不要和陌生人说话，只和朋友通信</p>
+<p>朋友:</p>
+<ol>
+<li>对象本身(this)</li>
+<li>当前对象的成员对象</li>
+<li>当前对象所创建的对象</li>
+<li>参数传入的对象</li>
+<li>如果对象成员是一个集合，里面的对象都是</li>
+</ol>
+<p><strong>总结</strong>:就是不允许出现 a .b().c()这样的对象调用,只能a .b()</p>
+</li>
+</ul>
+<h3 id="设计模式简介"><a href="#设计模式简介" class="headerlink" title="设计模式简介"></a>设计模式简介</h3><h4 id="什么是设计模式"><a href="#什么是设计模式" class="headerlink" title="什么是设计模式:"></a>什么是设计模式:</h4><ol>
+<li>遇到什么问题</li>
+<li>怎么解决问题</li>
+<li>效果怎么样</li>
+</ol>
+<h4 id="设计模式分类"><a href="#设计模式分类" class="headerlink" title="设计模式分类"></a>设计模式分类</h4><ol>
+<li><strong>创建型模式</strong>：创建对象</li>
+<li><strong>结构型模式</strong>:  处理类&#x2F;对象的组合</li>
+<li><strong>行为型模式</strong>：描述对类&#x2F;对象怎样交互和怎样分配职责(把一个方法变成一个类)</li>
+</ol>
+<h4 id="GoF设计模式"><a href="#GoF设计模式" class="headerlink" title="GoF设计模式"></a>GoF设计模式</h4><h5 id="创建型模式"><a href="#创建型模式" class="headerlink" title="创建型模式"></a>创建型模式</h5><h6 id="类模式"><a href="#类模式" class="headerlink" title="类模式"></a>类模式</h6><ol>
+<li>工厂方法模式</li>
+</ol>
+<h6 id="对象模式"><a href="#对象模式" class="headerlink" title="对象模式"></a>对象模式</h6><ol>
+<li>抽象工厂模式</li>
+<li>原型模式</li>
+<li>单例模式</li>
+</ol>
+<h5 id="结构型模式"><a href="#结构型模式" class="headerlink" title="结构型模式"></a>结构型模式</h5><h6 id="类模式-1"><a href="#类模式-1" class="headerlink" title="类模式"></a>类模式</h6><ol>
+<li>(类)适配器模式</li>
+</ol>
+<h6 id="对象模式-1"><a href="#对象模式-1" class="headerlink" title="对象模式"></a>对象模式</h6><ol>
+<li>(对象)适配器模式</li>
+<li>桥接模式</li>
+<li>组合模式</li>
+<li>装饰模式</li>
+<li>外观模式</li>
+<li>代理模式</li>
+</ol>
+<h5 id="行为型模式"><a href="#行为型模式" class="headerlink" title="行为型模式"></a>行为型模式</h5><h6 id="类模式-2"><a href="#类模式-2" class="headerlink" title="类模式"></a>类模式</h6><ol>
+<li>模板方法模式</li>
+</ol>
+<h6 id="对象模式-2"><a href="#对象模式-2" class="headerlink" title="对象模式"></a>对象模式</h6><ol>
+<li>命令模式</li>
+<li>迭代器模式</li>
+<li>观察者模式</li>
+<li>状态模式</li>
+<li>策略模式</li>
+</ol>
+<h1 id="创建型模式-1"><a href="#创建型模式-1" class="headerlink" title="创建型模式"></a>创建型模式</h1><h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>把对象实例化交给一个工厂类中,用户直接调用工厂类就行了.</p>
+<h3 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h3><p>一个抽象的物品类，具体物品对象就继承他并实现其中的方法,然后有一个工厂类负责返回实例化的物品对象.</p>
+<h5 id="使用环境"><a href="#使用环境" class="headerlink" title="使用环境"></a>使用环境</h5><ol>
+<li>工厂类负责创建的对象少,且不添加新功能</li>
+<li>客户只需传入参数给工厂类,对创建对象不用知道</li>
+</ol>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>实现对象创建和使用的分离</li>
+<li>客户端只需要知道具体产品的参数就行了</li>
+<li>引入配置文件,在不修改客户端代码的同时更换和增加新的具体产品类</li>
+</ol>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>一旦工厂类挂了,全部一起挂</li>
+<li>增加类的个数后,会增加系统的负责度和理解难度</li>
+<li>拓展困难,一旦有新产品添加就要修改工厂类(违反开闭原则)</li>
+</ol>
+<h3 id="工厂模式-1"><a href="#工厂模式-1" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>在简单工厂模式的基础上,不再是一个工厂类包一切,而是一个产品一个工厂类,所以工厂类继承一个抽象工厂总类.</p>
+<h5 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>在工厂方法模式中,工厂方法用来创建客户所需要的产品,同时还向客户端隐藏了哪种具体产品类将被实例化.</li>
+<li>创建对象完全封装在工厂类</li>
+<li>符合开闭原则</li>
+</ol>
+<h5 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>系统中类的个数将成对增加</li>
+<li>增加了系统的抽象性和理解难度.</li>
+</ol>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><p>分为两个维度:</p>
+<ol>
+<li>产品:单纯产品</li>
+<li>产品族:同一个工厂生产的,位于不同产品等级结构中的一组产品</li>
+</ol>
+<p>分法：a个工厂其中有一个b个产品,b个产品其中一个有a个方法.</p>
+<p>产品和产品族分为两个维度,一个是真产品,一个是生产产品的工厂,产品可以抽象为一个抽象类,每个不同工厂生产不同的产品,这些产品类继承这个抽象产品类.由于有不同工厂,不同工厂都继承一个抽象工厂总类,这个抽象工厂总类,就负责抽象返回不同产品的抽象类.具体工厂类就返回自己工厂生产相应的产品类.</p>
+<p>(要确定改变的一个维度为产品族(具体工厂),不改变的另一个维度为新产品(就是产品)).</p>
+<h5 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h5><ol>
+<li>工厂太多,减少类,分类工厂,但是符合开闭原则倾斜性(增加产品族&#x3D;符合开闭原则,增加产品&#x3D;不符合开闭原则)</li>
+<li>一个维度不变,另一个维度可变.</li>
+</ol>
+<h5 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>隔离了具体类的生产，客户并不需要知道什么被创建</li>
+<li>保证客户端一直用同一个产品族的对象</li>
+</ol>
+<h5 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>当新增产品的时候,需要修改产品族的代码,违反开闭原则.</li>
+</ol>
+<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><p>用来创建一个包含多个组成部分的复杂对象.</p>
+<p>首先先创建一个多属性的对象作为你的对象(或者可以理解为怎么组合套餐),然后定义一个抽象建造者类,在类中直接实例化一个前面的复杂对象,然后编写抽象方法让子类直接重写方法来修改前面复杂对象的属性,在加入一个返回这个复杂对象的方法,在子类中，由于父类是抽象建造者，其复杂对象是protected,因此直接在子类重写方法并给上面父类的复杂对象设置.再设置一个指导类用来注入相应子类,并调用抽象方法以及返回这个复杂对象.</p>
+<h5 id="适用环境-1"><a href="#适用环境-1" class="headerlink" title="适用环境"></a>适用环境</h5><ol>
+<li>产品对象有复杂内部结构</li>
+<li>产品对象中的属性有顺序</li>
+<li>隔离复杂对象的创建和使用</li>
+<li>创建过程封装再指导类</li>
+</ol>
+<h5 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>对象与对象的创建过程解耦，相同的创建过程创建不同的产品对象.</li>
+<li>方便替换建造者&#x2F;具体建造者,符合开闭原则</li>
+<li>控制产品的创建过程</li>
+</ol>
+<h5 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>产品的差异性很大.</li>
+<li>产品的内部变化太复杂.</li>
+</ol>
+<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><p>克隆出多个与原型对象一模一样的对象.</p>
+<h5 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h5><ol>
+<li>浅克隆:普通成员对象和原来一样,但是引用类型的成员对象不会被克隆,依然指向旧对象.</li>
+<li>深克隆:无论普通还是引用类型都会被复制.</li>
+</ol>
+<h5 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h5><ul>
+<li><p><strong>浅克隆</strong>(Cloneable)</p>
+<hr>
+<p>被克隆对象需要继承Cloneable接口,然后重写clone方法,方法中调用父类clone方法并返回克隆对象.</p>
+</li>
+<li><p><strong>深克隆(序列化)</strong></p>
+</li>
+</ul>
+<p>被克隆对象以及内部的引用的对象都必须实现Serializable接口,被克隆对象通过写入对象流中，再从流中读出来克隆对象.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Object <span class="title function_">deepClone</span><span class="params">()</span> <span class="keyword">throws</span> IOException, ClassNotFoundException &#123;</span><br><span class="line">    <span class="type">ByteArrayOutputStream</span> <span class="variable">byteArrayOutputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line">    <span class="type">ObjectOutputStream</span> <span class="variable">objectOutput</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(byteArrayOutputStream);</span><br><span class="line">    objectOutput.writeObject(<span class="built_in">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">ByteArrayInputStream</span> <span class="variable">byteArrayInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayInputStream</span>(byteArrayOutputStream.toByteArray());</span><br><span class="line">    <span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(byteArrayInputStream);</span><br><span class="line">    <span class="keyword">return</span>  ois.readObject();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="适用模式"><a href="#适用模式" class="headerlink" title="适用模式"></a>适用模式</h5><ol>
+<li>创建对象成本大</li>
+<li>系统要保存对象的状态,状态变化很小</li>
+<li>需要避免使用分层次的工厂类来创建分层次的对象.</li>
+</ol>
+<h5 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>提高创建新实例的创建效率</li>
+<li>简化创建结构</li>
+<li>深克隆可以保存对象的状态</li>
+</ol>
+<h5 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>每个类都需要配克隆类,当对已有类进行操作,会违背开闭原则</li>
+<li>深克隆代码复杂.</li>
+</ol>
+<h4 id="原型模式拓展"><a href="#原型模式拓展" class="headerlink" title="原型模式拓展"></a>原型模式拓展</h4><h5 id="带原型管理器的原型模式"><a href="#带原型管理器的原型模式" class="headerlink" title="带原型管理器的原型模式"></a>带原型管理器的原型模式</h5><p>首先创建抽象的原型模式类并且这个类继承Cloneable，其中包含克隆方法已经其他方法,继承他的子类重写克隆方法以及其他方法.然后创建一个原型模式管理类，里面定义一个hash表,然后设置可以向hash表输入key-value值的方法,不过这里的value是上面抽象原型模式的子类的实例化,再设置一个按key导出hash表里面实例化对象并克隆的以及返回克隆对象的方法.</p>
+<h5 id="相似对象的复杂"><a href="#相似对象的复杂" class="headerlink" title="相似对象的复杂"></a>相似对象的复杂</h5><p>复杂所得到的对象与原型对象并不是完全相同,它们的某些属性值存在异同,通过原型模式获得相同对象后可以再对其属性进行修改,从而获取所需对象.</p>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>保存某个类只能有一个实例,并且这个类自行实例化并提供这个实例</p>
+<p>要点：</p>
+<ol>
+<li>这个类只能有一个实例</li>
+<li>这个类自行创建</li>
+<li>自行提供这个实例</li>
+</ol>
+<h5 id="也可理解"><a href="#也可理解" class="headerlink" title="也可理解"></a>也可理解</h5><ol>
+<li>单例类的构造方法私有</li>
+<li>提供一个自身的静态私有成员变量</li>
+<li>提供一个公有的静态工厂方法.</li>
+</ol>
+<h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><ol>
+<li><p><strong>饿汉式</strong>(解决并发问题,但是占用内容资源,效率低)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton=<span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line"><span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>懒汉式</strong>(存在并发问题,只能串行,效率高,内存资源少)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton=<span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    线程不安全</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</span><br><span class="line">            singleton=<span class="keyword">new</span> <span class="title class_">Singleton</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>上锁的懒汉式</strong>(解决懒汉式的缺点)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> SySingleton singleton=<span class="literal">null</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="title function_">SySingleton</span><span class="params">()</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">static</span> SySingleton <span class="title function_">getInstance</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(singleton==<span class="literal">null</span>)&#123;</span><br><span class="line">        singleton=<span class="keyword">new</span> <span class="title class_">SySingleton</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>多例模式</strong>（加个集合类保存以及计算器限制第几个）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span>  <span class="keyword">static</span> ArrayList&lt;Doubleton&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> numbers=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="title function_">Doubleton</span><span class="params">()</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> Doubleton <span class="title function_">getInstance</span><span class="params">(<span class="type">int</span> i)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(i&gt;=<span class="number">0</span>&amp;&amp;i&lt;numbers)&#123;</span><br><span class="line">       <span class="keyword">return</span> list.get(i);</span><br><span class="line">   &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span>  <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title function_">setInstance</span><span class="params">(<span class="type">int</span> i)</span>&#123;</span><br><span class="line">    list.clear();</span><br><span class="line">    numbers=i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> a=<span class="number">0</span>;a&lt;i;a++)&#123;</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Doubleton</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h5><ol>
+<li>自需要一个实例对象,</li>
+<li>只允许一个公共访问点.</li>
+</ol>
+<h5 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>提供唯一实例的受控访问</li>
+<li>节约资源</li>
+<li>多例模式</li>
+</ol>
+<h5 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>缺少抽象层,难拓展</li>
+<li>单列职责过重</li>
+<li>由于自动垃圾回收机制,可能导致共享的单例对象的状态丢失.</li>
+</ol>
+<h1 id="结构型模式-1"><a href="#结构型模式-1" class="headerlink" title="结构型模式"></a>结构型模式</h1><h2 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h2><h4 id="分类：-1"><a href="#分类：-1" class="headerlink" title="分类："></a>分类：</h4><ol>
+<li><p>类适配器(继承)</p>
+<hr>
+<p>创建目标接口，以及被适配者类，目标需要被适配者的方法,于是创建一个适配器类,适配器类中<strong>继承</strong>目标接口以及继承被适配者类,并且重写目标接口的方法,方法里面调用父类被适配者的方法.</p>
+</li>
+<li><p>对象适配器(关联)</p>
+<hr>
+<p>创建目标接口,以及被适配者类,目标需要被适配者的方法，但是这里不用继承,用关联关系,直接把被适配器类放入适配器类中当属性,并且适配者类继承目标接口，并且重写目标接口方法,在方法中调用成员变量中被适配者类中的方法.当然通过构造方法注入被适配者类.</p>
+</li>
+</ol>
+<h4 id="适用环境-2"><a href="#适用环境-2" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>系统需要适用一些现有的类,而在这些类的接口不符合系统的需要,甚至没有这些类的源代码</li>
+<li>创建一个可以重复使用的类(例如JDBC的连接).</li>
+</ol>
+<h4 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>目标类和适配器类解耦</li>
+<li>增加了类的透明性和复用性</li>
+<li>灵活性和拓展性都很好</li>
+</ol>
+<h4 id="类适配器优缺点"><a href="#类适配器优缺点" class="headerlink" title="类适配器优缺点"></a>类适配器优缺点</h4><h5 id="优点-7"><a href="#优点-7" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>适配器类是适配者类的子类，所以可以在适配器类中置换一些适配者方法</li>
+</ol>
+<h5 id="缺点-6"><a href="#缺点-6" class="headerlink" title="缺点"></a>缺点</h5><p>对于java，C#面向对象的语言</p>
+<ol>
+<li>一次最多适配一个适配者类</li>
+<li>目标抽象类只能为接口</li>
+<li>适配者类不能为最终类</li>
+</ol>
+<h4 id="对象适配器优缺点"><a href="#对象适配器优缺点" class="headerlink" title="对象适配器优缺点"></a>对象适配器优缺点</h4><h5 id="优点-8"><a href="#优点-8" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>可以适配多个不同的适配者类到同一个适配器类中</li>
+</ol>
+<h5 id="缺点-7"><a href="#缺点-7" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>实现过程复杂</li>
+</ol>
+<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p>将抽象部分与实现部分分离.A(接口)搭桥(聚合关系)到B(抽象类),B(抽象类)搭桥(聚合关系)到C(抽象类)….</p>
+<p>(A,B,C….n个维度)</p>
+<p>首先先取某一个维度作为接口，并且子类继承实现,然后再创建另一个维度的抽象类,抽象类中将前面的接口作为聚合关系加入.并且设置protected，接着再创建一个抽象方法,用来给这个维度的子类实现相应方法,并且在这个方法可以调用父类中成员变量来使用接口的方法.然后再客户端类中实例化第二个维度的抽象类，然后实例化第一个接口，然后注入前面实例化的抽象类中,并调用第一个类中的方法.</p>
+<p>实现多个维度:可以继续加入抽象类，这个抽象类是和上一个抽象类成聚合关系,后面的内容与上面第一个抽象类差不多.</p>
+<h4 id="适用环境-3"><a href="#适用环境-3" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>抽象化和具体化之间更加灵活,避免在两个层次之间建立静态的继承关系.</li>
+<li>抽象和实现部分独立拓展且互不影响</li>
+<li>一个类存在两个(或多个)独立变化的维度</li>
+<li>不希望使用继承&#x2F;多继承导致系统类的个数急剧增加</li>
+</ol>
+<h4 id="优点-9"><a href="#优点-9" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>分离抽象接口和实现部分</li>
+<li>取代多继承方案,极大减少子类的个数</li>
+<li>提供拓展性,符合开闭原则</li>
+</ol>
+<h4 id="缺点-8"><a href="#缺点-8" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>增加系统的理解与设计难度</li>
+<li>很难正确识别出系统中两个独立变化的维度</li>
+</ol>
+<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><p>组合模式&#x3D;&#x3D;&gt;可以类比成树形结构图.</p>
+<p>树形结构图分为结构抽象类，包含动作方法,然后分为叶子类以及容器类，和文件系统差不多，一个文件夹中有文件和文件夹，文件夹中还有文件……,它们都属于结构抽象类的子类.实现结构抽象类的方法,一般有operation这个方法,如果抽象类只有这个方法,那么就叫安全组合模式(也就是叶子类和容器类不全部实现),如果有add,remove,get还有operation方法那就是透明组合模式(叶子类和容器类全部实现).其中operation方法都是遍历容器类中的集合类，在客户端类中只需调用最顶的树.</p>
+<h4 id="适用模式-1"><a href="#适用模式-1" class="headerlink" title="适用模式"></a>适用模式</h4><ol>
+<li>能够分离出叶子对象和容器对象(DOM去操作一个由组合模式搭起来的树型结构)</li>
+<li>有整体和部分的层次结构</li>
+</ol>
+<h4 id="优点-10"><a href="#优点-10" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>定义分层次的差异，忽略层次差异</li>
+<li>客户端可以一致性地使用组合结构或其中当个对象,简化客户端代码</li>
+<li>新增叶子和容器类，符合开闭原则，</li>
+<li>可以一直递归下去形成复杂的树状结构</li>
+</ol>
+<h4 id="缺点-9"><a href="#缺点-9" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>很难对容器中的构件类型进行限制.(限制不了某个叶子&#x2F;容器类的注入)</li>
+</ol>
+<h4 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h4><ol>
+<li><p><strong>透明组合模式</strong></p>
+<hr>
+<p>抽象组件Component声明了所有管理成员对象的方法.叶子类和容器类都能实现</p>
+<p>缺点:不够安全</p>
+</li>
+<li><p><strong>安全组合模式</strong></p>
+<hr>
+<p>抽象组件Component中没有声明任何管理成员对象的方法,但是容器类实现了管理成员对象的方法.</p>
+<p>缺点:不够透明.</p>
+</li>
+</ol>
+<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><p>可以在不改变一个对象的情况下新增额外行为.</p>
+<p>一个类的对象嵌入另一个新对象中，由另一个对象来决定是否调用嵌入对象的行为并拓展新的行为,这个新的对象就叫装饰类,装饰类和被装饰类必须实现相同的构件接口.</p>
+<p>首先先创建一个构件接口，只有operation方法,而后被装饰类和装饰类继承这个接口并且实现方法,被装饰类也就是原来的对象,直接实现方法就行.但是装饰类就要和这个构件接口的类形成聚合关系,然后重写的operation的方法是用来调用这个成员变量中的operation方法.然后创建一些具体装饰类,这些类都继承上面的装饰类,接着重写构造方法和operation方法,以及新添加的功能,在operation方法中调用新添加的功能方法.</p>
+<h4 id="透明装饰类"><a href="#透明装饰类" class="headerlink" title="透明装饰类"></a>透明装饰类</h4><p>客户端程序不声明具体装饰类和具体构件类,全部都声明抽象构件接口.</p>
+<p>(可以反复多次装饰,但是不能使用具体装饰类中的方法)</p>
+<h4 id="半透明装饰类"><a href="#半透明装饰类" class="headerlink" title="半透明装饰类"></a>半透明装饰类</h4><p>客户端程序允许用户声明具体装饰类和具体构件类，这样可以调用具体装饰类中新增的方法.</p>
+<p>(不可以反复装饰)</p>
+<h4 id="适用模式-2"><a href="#适用模式-2" class="headerlink" title="适用模式"></a>适用模式</h4><ol>
+<li>在不影响其他对象的情况下,以动态&#x2F;透明的方式给单个对象添加职责</li>
+<li>不能用继承&#x2F;继承不利于系统维护和拓展时</li>
+</ol>
+<h4 id="优点-11"><a href="#优点-11" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>拓展对象的功能,装饰模式比继承更加灵活,不会导致类的个数快速增加</li>
+<li>通过一种动态的方式来拓展一个对象的功能</li>
+<li>多次装饰</li>
+<li>用户可以根据需要增加新的具体构件类和具体装饰类,符合开闭原则</li>
+</ol>
+<h4 id="缺点-10"><a href="#缺点-10" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>会产生很多小对象,影响性能</li>
+<li>难排错</li>
+</ol>
+<h2 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h2><p>用户只需要直接与外观类交互，用户与子系统之间的复杂关系由外观角色来实现,降低系统的耦合度.但是外观了不会产生任何活动.</p>
+<p>子系统的类都以关联形式连接外观类,客户端直接调用外观类.</p>
+<h4 id="适用模式-3"><a href="#适用模式-3" class="headerlink" title="适用模式"></a>适用模式</h4><ol>
+<li>一系列复杂的子系统提供一个简单入口</li>
+<li>客户端与多个子系统之间存在很大的依赖性</li>
+<li>可以定义系统中每一层的入口,降低耦合度</li>
+</ol>
+<h4 id="优点-12"><a href="#优点-12" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>减少客户端要处理的对象数目</li>
+<li>子系统与客户端之间松耦合关系</li>
+<li>一个子系统的修改对其他子系统没有任何影响</li>
+</ol>
+<h4 id="缺点-11"><a href="#缺点-11" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不能很好限制客户端直接适用子系统类</li>
+<li>如果设计不当,增加新的子系统可能需要修改外观类的源代码，违背开闭原则.</li>
+</ol>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><p>通过引入一个新的对象来实现真实对象的操作,新的对象时真实对象的替身,客户端只需访问那个新的对象就行，那个新的对象是代理类.代理模式虽然和外观模式差不多但是代理模式是当代理的同时要干活,和装饰模式又一样，装饰模式是对对象的争强，而代理模式是对对象的限制或者控制.</p>
+<p>首先创建一个抽象主题类，让真实对象和代理对象都实现这个抽象类(含有一定的方法),将代理对象与真实对象形成组合关联关系,然后代理对象调用成员变量中的方法,并且添加一点限制来控制这些方法.</p>
+<h4 id="适用环境-4"><a href="#适用环境-4" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>远程代理</li>
+<li>虚拟代理</li>
+<li>缓冲代理</li>
+<li>保护代理</li>
+<li>智能引用</li>
+</ol>
+<h4 id="优点-13"><a href="#优点-13" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>协调调用者和被调用者,降低耦合度</li>
+<li>增加和更换代理类无限修改源代码,只需要新增一个类继承抽象类,符合开闭原则</li>
+</ol>
+<h4 id="缺点-12"><a href="#缺点-12" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>可能会变慢(保护代理)</li>
+<li>可能会很复杂(远程代理)</li>
+</ol>
+<h4 id="强制代理"><a href="#强制代理" class="headerlink" title="强制代理"></a>强制代理</h4><p>通过真实对象找代理对象</p>
+<h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><p>代理类不再固定,而是动态生成.</p>
+<h1 id="行为型模式-1"><a href="#行为型模式-1" class="headerlink" title="行为型模式"></a>行为型模式</h1><p>不仅仅关注类和对象本身,还关注它们之间的相互作用和职责划分.</p>
+<ul>
+<li><p>类行为型模式(继承关系)</p>
+<hr>
+<p>通过多态方式分配父类与子类的职责.</p>
+</li>
+<li><p>对象行为模式(关联关系)</p>
+<hr>
+<p>通过对象关联等关系等方式分配两个&#x2F;多个类的职责.</p>
+</li>
+</ul>
+<h2 id="职责链模式"><a href="#职责链模式" class="headerlink" title="职责链模式"></a>职责链模式</h2><p>避免请求发送者与接收者耦合在一起,让多个对象都有可能接收请求,并且沿着这条链传递请求,直到有对象处理它.</p>
+<p>类似于链的关系，先创建一个抽象类，这个抽象类中有一个protected的自身抽象类的属性,相当于自关联,这个成员变量相当于指针指向下一家,当然还有个构造方法用来注入值，然后在设置一个抽象方法中参数用来给传送链上的数据.链上各个类继承这个抽象类,然后重写方法,并且设置if-else处理请求，如果不满足就调用父类中的成员变量抽象类的抽象方法并且传入参数,用来寻找下一家.在客户端中,先用抽象类声明，在用链上的类来实现，在用抽象类中构造方法注入下一家，来达到链的作用.</p>
+<h4 id="适用环境-5"><a href="#适用环境-5" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>有多个对象可以处理同一个请求.</li>
+<li>向多个对象中的一个提交一个请求</li>
+<li>可动态指定一组对象处理请求.</li>
+</ol>
+<h4 id="优点-14"><a href="#优点-14" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>降低系统的耦合度</li>
+<li>简化对象连接</li>
+<li>给对象职责的分配带来更多灵活性</li>
+<li>增加一个新的具体请求处理者时无限改原来代码</li>
+</ol>
+<h4 id="缺点-13"><a href="#缺点-13" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不保证请求一定被处理</li>
+<li>性能受一定影响</li>
+<li>设计不当,会产生死循环.</li>
+</ol>
+<h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><p>根据单一职责原则，迭代器模式有两个东西,一个基本功能是存储数据,另一个是遍历数据.创建一个聚合类用来存储数据，再创建一个迭代器类来遍历聚合类的数据，两个都是抽象类，在聚合抽象类中有一个方法是返回迭代器类，迭代器负责那是迭代方法.</p>
+<h4 id="适用环境-6"><a href="#适用环境-6" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>访问聚合对象但是不暴露内部内容</li>
+<li>为一个聚合对象提供多种遍历方式</li>
+<li>为遍历不同的聚合结构提供一个统一的接口</li>
+</ol>
+<h4 id="优点-15"><a href="#优点-15" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>不同的方式遍历一个聚合对象</li>
+<li>简化聚合类</li>
+<li>由于抽象类的关系，新增聚合类和迭代器类都很方便,符合开闭原则.</li>
+</ol>
+<h4 id="缺点-14"><a href="#缺点-14" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>类的个数成对增加</li>
+<li>抽象迭代器设计难度大</li>
+</ol>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>把一个请求封装成一个对象.</p>
+<p>命令模式可以对发送者和接收者完全耦合,发生者与接收者之间没有直接引用关系,发送请求的对象只需要指定如何发送请求,而不必指定如何完成请求.</p>
+<p>先创建一个接收者类，然后创建一个抽象命令类,然后创建具体命令类都继承抽象命令类,重写方法，并且与接收者类关联，然后再方法中调用其中一个方法，以此类推，一个请求一个对象,然后创建一个控制类,与每个命令对象组合关系,然后一个命令对象一个方法，最后客户端直接调用控制类，并调用里面的方法.</p>
+<h4 id="适用环境-7"><a href="#适用环境-7" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>将请求调用者和请求接收者解耦</li>
+<li>需要不同时间指定请求,将请求排队和执行请求</li>
+<li>支持命令的撤销(Undo)操作和恢复(Redo)操作</li>
+<li>一组操作在一起形成宏命令</li>
+</ol>
+<h4 id="优点-16"><a href="#优点-16" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>降低耦合度</li>
+<li>新命令很容易添加,符合开闭原则</li>
+<li>可设计一个命令队列&#x2F;宏命令(组合命令)</li>
+<li>可设计撤销和恢复</li>
+</ol>
+<h4 id="缺点-15"><a href="#缺点-15" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>具体命令类太多</li>
+</ol>
+<h2 id="命令模式-1"><a href="#命令模式-1" class="headerlink" title="命令模式"></a>命令模式</h2><p>对象间的一种一对多的关系,当一个对象状态(被观察者)发送改变,其依赖对象(观察者)都会得到通知.</p>
+<p>首先创建一个被观察抽象类,类中有一个protected集合类作为成员变量负责装观察者类,并且有方法负责对其增加或删除,再有一个抽象方法个给子类实现对象变化后，遍历上面的结合类，并调用其中的观察者类的方法.再创建一个观察者抽象类,只包含接到反映后做出的动作(方法).子类再实现.最后客户端实现被观察者类和观察者类，将观察者类装入被观察者类中，再调用被观察者中的那个遍历(抽象)方法.</p>
+<h4 id="适用环境-8"><a href="#适用环境-8" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>抽象模式有两个方面,一个方面依赖另一个方面</li>
+<li>一个对象的改变将导致一个或多个其他对象发送改变</li>
+<li>需要创建一个触发链</li>
+</ol>
+<h4 id="优点-17"><a href="#优点-17" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>表示层和数据逻辑层的分类</li>
+<li>被观察者和观察者之间建立一个抽象的耦合</li>
+<li>支持广播通信</li>
+<li>符合开闭原则</li>
+</ol>
+<h4 id="缺点-16"><a href="#缺点-16" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>观察者通知会花费很多时间</li>
+<li>可能存在循环依赖问题</li>
+<li>观察者不知道所观察的目标对象怎么发送变化.</li>
+</ol>
+<h2 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h2><p>一个对象的行为取决于一个&#x2F;多个动态变化的属性,这个属性也叫状态.在不同状态下行为页不一样.</p>
+<p>首先先创建一个这个对象类,然后创建一个抽象状态类,在对象类中,有它对应的属性以及抽象状态类作为成员变量,当然给它设置get&#x2F;set方法,以及在构造方法中给予初始值,以及实例化后面抽象状态类子类中的第一个状态类,抽象状态类必须存在一个protected的对象类用来传递状态和数值，以及很重要的用来判断状态的抽象方法，这个抽象方法可以通过对象类的数值来判断，方法中用if-else语句判断,如果满足条件就设置这个抽象类中的成员变量中的对象类中的抽象状态类的值为抽象类其他子类,实现状态转换,在抽象状态类的子类中,有构造方法以及那个重写的判断状态的方法,还有其他变化方法,在构造方法中，参数是抽象状态类,用来传值，并且把参数类中的值给&#x2F;设置本类中父类抽象类中的值.在其他变化方法中，当判断值改变后要调用状态改变的那个抽象方法,来判断状态是否需要转换.</p>
+<p>(状态转换方法可以放在对象类中也可也放在抽象状态类中)</p>
+<h4 id="适用环境-9"><a href="#适用环境-9" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>对象大的行为依赖它的状态(某个属性值),状态的改变将导致行为的变化.</li>
+<li>代码中保护大量与对象状态有光的条件语句.</li>
+</ol>
+<h4 id="优点-18"><a href="#优点-18" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>封装了状态的转换规则，对状态转换代码进行集中管理</li>
+<li>将所有与某个状态有关的行为放在一个类</li>
+<li>允许状态转换逻辑与状态对象合成一体,而不是提供一个巨大的条件语句快.</li>
+<li>多个环境对象共享一个状态对象,减少系统中对象的个数</li>
+</ol>
+<h4 id="缺点-17"><a href="#缺点-17" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>增加类和对象的个数</li>
+<li>设计不当容易造成程序结构和代码混乱</li>
+<li>对开闭原则的支持不太友好.</li>
+</ol>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>实现某个目标的途径不止一条.</p>
+<p>定义一系列算法,将每个算法封装起来,然后让它们可以相互替换.</p>
+<p>创建一个环境类，一个策略抽象类，策略抽象类就定义一个抽象方法，让具体策略类来重写，并且注入到环境类，环境了再调用那个抽象方法.</p>
+<h4 id="适用环境-10"><a href="#适用环境-10" class="headerlink" title="适用环境"></a>适用环境</h4><ol>
+<li>动态选择算法</li>
+<li>避免适用难以维护的多重条件选择语句</li>
+<li>用户不知道相关算法,提供算法的保密性与安全性.</li>
+</ol>
+<h4 id="优点-19"><a href="#优点-19" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>完美支持开闭原则</li>
+<li>提供管理相关的算法族的办法</li>
+<li>可以替代继承关系的办法</li>
+<li>避免多次条件的选择语句</li>
+<li>提供算法复用机制</li>
+</ol>
+<h4 id="缺点-18"><a href="#缺点-18" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>客户端必须知道所有的策略类</li>
+<li>会产生很多具体策略类</li>
+<li>无法同时使用多个策略类.</li>
+</ol>
+<h2 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h2><p>分为两个</p>
+<ol>
+<li><p>模板方法：一个有顺序流程</p>
+</li>
+<li><p>基本方法:这个流程里面的每个步骤</p>
+<hr>
+<ol>
+<li><p>抽象方法:在这个步骤有不同做法(在不同继承的类重写不同的方法)</p>
+</li>
+<li><p>具体方法:在这个步骤都是这个固定做法</p>
+</li>
+<li><p>构造方法:这个方法做还是不做</p>
+<hr>
+<ol>
+<li>isXXX或者hasXXX类型方法：方法返回boolean</li>
+<li>空方法：直接不写方法里面的内容(也就是不做)，如果想做就在继承的子类中重写方法</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="适用类型"><a href="#适用类型" class="headerlink" title="适用类型"></a>适用类型</h4><ol>
+<li>一次性实现一个算法的不变部分,并将可变的行为留给子类实现</li>
+<li>公共父类,避免代码重复</li>
+<li>通过子类来决定父类算法中某个步骤是否执行，实现子类对父类的方向控制.</li>
+</ol>
+<h4 id="优点-20"><a href="#优点-20" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>子类实现详细的处理算法时并不会改变算法中步骤的执行次序</li>
+<li>公共行为放在类中，通过其子类来实现不同的行为</li>
+<li>可实现反向控制结构,通过子类覆盖父类的构造方法来决定某一特定步骤是否需要执行</li>
+<li>符合开闭原则和单一职责原则</li>
+</ol>
+<h4 id="缺点-19"><a href="#缺点-19" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>父类的可变基本方法太多,导致类的个数增加</li>
+</ol>
+</div><div class="article-licensing box"><div class="licensing-title"><p>java设计模式</p><p><a href="https://liust1918.github.io/Liust1918.githud.io/2022/12/04/java设计模式/">https://liust1918.github.io/Liust1918.githud.io/2022/12/04/java设计模式/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-12-04</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-12-04</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Liust1918.githud.io/tags/java/">java</a><a class="link-muted mr-2" rel="tag" href="/Liust1918.githud.io/tags/%E6%8A%80%E6%9C%AF%E4%B9%A6/">技术书</a><a class="link-muted mr-2" rel="tag" href="/Liust1918.githud.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/Liust1918.githud.io/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Liust1918.githud.io/2022/12/04/%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">逆波兰表达式求值</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Liust1918.githud.io/2022/12/04/Android%E5%85%A5%E9%97%A8/"><span class="level-item">Android入门</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Liust1918"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Liust1918</p><p class="is-size-6 is-block">Web Developer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Ice Earth</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/Liust1918.githud.io/archives"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/Liust1918.githud.io/categories"><p class="title">9</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/Liust1918.githud.io/tags"><p class="title">16</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Liust1918" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/Liust1918.githud.io/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#设计模式"><span class="level-left"><span class="level-item">1</span><span class="level-item">设计模式</span></span></a><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#类的关系"><span class="level-left"><span class="level-item">1.1.1</span><span class="level-item">类的关系</span></span></a></li><li><a class="level is-mobile" href="#面向对象设计"><span class="level-left"><span class="level-item">1.1.2</span><span class="level-item">面向对象设计</span></span></a></li><li><a class="level is-mobile" href="#设计模式简介"><span class="level-left"><span class="level-item">1.1.3</span><span class="level-item">设计模式简介</span></span></a></li></ul></ul></li><li><a class="level is-mobile" href="#创建型模式-1"><span class="level-left"><span class="level-item">2</span><span class="level-item">创建型模式</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#工厂模式"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">工厂模式</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#简单工厂模式"><span class="level-left"><span class="level-item">2.1.1</span><span class="level-item">简单工厂模式</span></span></a></li><li><a class="level is-mobile" href="#工厂模式-1"><span class="level-left"><span class="level-item">2.1.2</span><span class="level-item">工厂模式</span></span></a></li><li><a class="level is-mobile" href="#抽象工厂模式"><span class="level-left"><span class="level-item">2.1.3</span><span class="level-item">抽象工厂模式</span></span></a></li></ul></li><li><a class="level is-mobile" href="#建造者模式"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">建造者模式</span></span></a></li><li><a class="level is-mobile" href="#原型模式"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">原型模式</span></span></a></li><li><a class="level is-mobile" href="#单例模式"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">单例模式</span></span></a></li></ul></li><li><a class="level is-mobile" href="#结构型模式-1"><span class="level-left"><span class="level-item">3</span><span class="level-item">结构型模式</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#适配器模式"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">适配器模式</span></span></a></li><li><a class="level is-mobile" href="#桥接模式"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">桥接模式</span></span></a></li><li><a class="level is-mobile" href="#组合模式"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">组合模式</span></span></a></li><li><a class="level is-mobile" href="#装饰模式"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">装饰模式</span></span></a></li><li><a class="level is-mobile" href="#外观模式"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">外观模式</span></span></a></li><li><a class="level is-mobile" href="#代理模式"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">代理模式</span></span></a></li></ul></li><li><a class="level is-mobile" href="#行为型模式-1"><span class="level-left"><span class="level-item">4</span><span class="level-item">行为型模式</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#职责链模式"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">职责链模式</span></span></a></li><li><a class="level is-mobile" href="#迭代器模式"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">迭代器模式</span></span></a></li><li><a class="level is-mobile" href="#命令模式"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">命令模式</span></span></a></li><li><a class="level is-mobile" href="#命令模式-1"><span class="level-left"><span class="level-item">4.4</span><span class="level-item">命令模式</span></span></a></li><li><a class="level is-mobile" href="#状态模式"><span class="level-left"><span class="level-item">4.5</span><span class="level-item">状态模式</span></span></a></li><li><a class="level is-mobile" href="#策略模式"><span class="level-left"><span class="level-item">4.6</span><span class="level-item">策略模式</span></span></a></li><li><a class="level is-mobile" href="#模板方法模式"><span class="level-left"><span class="level-item">4.7</span><span class="level-item">模板方法模式</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/Liust1918.githud.io/js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com/Liust1918" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Githud</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/Android/"><span class="level-start"><span class="level-item">Android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/C%E8%AF%AD%E8%A8%80/"><span class="level-start"><span class="level-item">C语言</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/Hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/LeetCode/"><span class="level-start"><span class="level-item">LeetCode</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/"><span class="level-start"><span class="level-item">后端</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/spring/"><span class="level-start"><span class="level-item">spring</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="level-start"><span class="level-item">设计模式</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:38:34.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/">买卖股票的最佳时机IV</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/LeetCode/">LeetCode</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:38:34.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4/">网络延迟时间</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/LeetCode/">LeetCode</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:38:34.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84%E5%8F%AF%E8%83%BD/">所有路径可能</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/LeetCode/">LeetCode</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:38:34.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/%E6%95%91%E7%94%9F%E8%89%87/">救生艇</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/LeetCode/">LeetCode</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:38:34.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/%E8%A7%A3%E6%95%B0%E7%8B%AC/">解数独</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/LeetCode/">LeetCode</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Liust1918.githud.io/archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/Android/"><span class="tag">Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/C/"><span class="tag">C</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/C/"><span class="tag">C++</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/Hibernate/"><span class="tag">Hibernate</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/LeetCode/"><span class="tag">LeetCode</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/githud/"><span class="tag">githud</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/java/"><span class="tag">java</span><span class="tag">14</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/java8/"><span class="tag">java8</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/spring/"><span class="tag">spring</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/springboot2/"><span class="tag">springboot2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/%E5%90%8E%E7%AB%AF/"><span class="tag">后端</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/%E6%8A%80%E6%9C%AF%E4%B9%A6/"><span class="tag">技术书</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="tag">设计模式</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="adsense"><div class="card-content"><div class="menu"><h3 class="menu-label">广告</h3><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="liust" data-ad-slot="1918" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/Liust1918.githud.io/"><img src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/Liust1918.githud.io/js/column.js"></script><script src="/Liust1918.githud.io/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/Liust1918.githud.io/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/Liust1918.githud.io/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/Liust1918.githud.io/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/Liust1918.githud.io/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
