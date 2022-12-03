@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>SSM重新学习 - Hexo</title><link rel="manifest" href="/Liust1918.githud.io/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/Battlerfiled3.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="SSM重新学习"><meta property="og:type" content="blog"><meta property="og:title" content="SSM重新学习"><meta property="og:url" content="https://liust1918.github.io/Liust1918.githud.io/2022/12/04/SSM%E9%87%8D%E6%96%B0%E5%AD%A6%E4%B9%A0/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="SSM重新学习"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://liust1918.github.io/Liust1918.githud.io/img/og_image.png"><meta property="article:published_time" content="2022-12-03T16:56:56.000Z"><meta property="article:modified_time" content="2022-12-03T16:59:42.124Z"><meta property="article:author" content="John Doe"><meta property="article:tag" content="java"><meta property="article:tag" content="后端"><meta property="article:tag" content="SSM"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://liust1918.github.io/Liust1918.githud.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://liust1918.github.io/Liust1918.githud.io/2022/12/04/SSM%E9%87%8D%E6%96%B0%E5%AD%A6%E4%B9%A0/"},"headline":"SSM重新学习","image":["https://liust1918.github.io/Liust1918.githud.io/img/og_image.png"],"datePublished":"2022-12-03T16:56:56.000Z","dateModified":"2022-12-03T16:59:42.124Z","author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://liust1918.github.io/img/Battlerfiled3.jpg"}},"description":"SSM重新学习"}</script><link rel="canonical" href="https://liust1918.github.io/Liust1918.githud.io/2022/12/04/SSM%E9%87%8D%E6%96%B0%E5%AD%A6%E4%B9%A0/"><link rel="icon" href="/Liust1918.githud.io/img/Battlerfiled3.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/Liust1918.githud.io/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><script data-ad-client="liust" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+          Array
+              .from(document.querySelectorAll('.tab-content'))
+              .forEach($tab => {
+                  $tab.classList.add('is-hidden');
+              });
+          Array
+              .from(document.querySelectorAll('.tabs li'))
+              .forEach($tab => {
+                  $tab.classList.remove('is-active');
+              });
+          const $activeTab = document.querySelector(location.hash);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+          const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Liust1918.githud.io/"><img src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Liust1918.githud.io/">主页(Home)</a><a class="navbar-item" href="/Liust1918.githud.io/archives">文章(Archives)</a><a class="navbar-item" href="/Liust1918.githud.io/categories">类型(Categories)</a><a class="navbar-item" href="/Liust1918.githud.io/tags">标签(Tags)</a><a class="navbar-item" href="/Liust1918.githud.io/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-12-03T16:56:56.000Z" title="2022/12/4 00:56:56">2022-12-04</time>发表</span><span class="level-item"><time dateTime="2022-12-03T16:59:42.124Z" title="2022/12/4 00:59:42">2022-12-04</time>更新</span><span class="level-item"><a class="link-muted" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/">后端</a><span> / </span><a class="link-muted" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/SSM/">SSM</a></span><span class="level-item">29 分钟读完 (大约4367个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">SSM重新学习</h1><div class="content"><h1 id="SSM重新学习"><a href="#SSM重新学习" class="headerlink" title="SSM重新学习"></a>SSM重新学习</h1><span id="more"></span>
+
+
+<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><h5 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h5><p>编译和打包项目,依赖管理</p>
+<p>pom.xml（Poject Object Model）</p>
+<h5 id="中央仓库搜索依赖"><a href="#中央仓库搜索依赖" class="headerlink" title="中央仓库搜索依赖"></a>中央仓库搜索依赖</h5><p><a target="_blank" rel="noopener" href="https://search.maven.org/">https://search.maven.org/</a></p>
+<h5 id="包组织"><a href="#包组织" class="headerlink" title="包组织"></a>包组织</h5><ul>
+<li>groupId：组织id</li>
+<li>artifactId：项目id</li>
+<li>version：项目版本</li>
+</ul>
+<h5 id="构建生命周期"><a href="#构建生命周期" class="headerlink" title="构建生命周期"></a>构建生命周期</h5><p>直接mvn package来完成 compile 和test</p>
+<h1 id="IOC-Inversion-Of-Control-控制反转"><a href="#IOC-Inversion-Of-Control-控制反转" class="headerlink" title="IOC(Inversion Of Control)控制反转"></a>IOC(Inversion Of Control)控制反转</h1><h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><p>我要租房，以前都是我直接找房东，找不同的房子就找不同的房东。但是现在出现了一个房屋中介，这个中介帮我们直接联系房东和管理房东的房子，我只要问房屋中介我要什么样的房子就行了.中介自动帮我找到对应房子的房东.</p>
+<h5 id="目的-1"><a href="#目的-1" class="headerlink" title="目的"></a>目的</h5><p>降低程序之间的直接耦合</p>
+<h5 id="IOC和DI（Dependency-Injection）"><a href="#IOC和DI（Dependency-Injection）" class="headerlink" title="IOC和DI（Dependency Injection）"></a>IOC和DI（Dependency Injection）</h5><ul>
+<li>IOC是设计理念（宏观目标）<ul>
+<li>通过IOC容器来创建和管理Bean对象，用注入来操作Bean对象</li>
+</ul>
+</li>
+<li>DI是具体实现（微观目标）<ul>
+<li>在java中利用”反射(Reflection)”来注入（Injection）</li>
+</ul>
+</li>
+</ul>
+<h1 id="Spring-5"><a href="#Spring-5" class="headerlink" title="Spring 5"></a>Spring 5</h1><p>IOC的具体实现</p>
+<h5 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h5><p>反射</p>
+<h5 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h5><ul>
+<li>工厂模式</li>
+<li>代理模式</li>
+</ul>
+<h5 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h5><p>![屏幕截图 2022-01-05 140503](D:\TyporaOfimage\屏幕截图 2022-01-05 140503.png)</p>
+<h6 id="数据交互"><a href="#数据交互" class="headerlink" title="数据交互"></a>数据交互</h6><ul>
+<li>传统数据库mysql，Oracl：Spring Data Repositories</li>
+<li>Nosql，分布式数据库：Spring Data Reactive Repositories</li>
+</ul>
+<h6 id="Web框架"><a href="#Web框架" class="headerlink" title="Web框架"></a>Web框架</h6><ul>
+<li>Spring MVC：Spirng 4以前</li>
+<li>Spring WebFlux：新的MVC框架，基于NIO，更适合分布式和并发</li>
+</ul>
+<h6 id="安全框架"><a href="#安全框架" class="headerlink" title="安全框架"></a>安全框架</h6><ul>
+<li>Spring Security:基本安全框架</li>
+<li>Spring Security Reactive：基于反应式编程的安全框架</li>
+</ul>
+<h6 id="Web框架底层实现"><a href="#Web框架底层实现" class="headerlink" title="Web框架底层实现"></a>Web框架底层实现</h6><ul>
+<li>Servlet API：Spring MVC的底层实现</li>
+<li>Reactive Stream Adapters：Spring WebFlux的底层实现</li>
+</ul>
+<h6 id="Wen容器"><a href="#Wen容器" class="headerlink" title="Wen容器"></a>Wen容器</h6><ul>
+<li>Servlet Containers：tomcat，jetty</li>
+<li>Netty Containers：类Netty容器</li>
+</ul>
+<p>Spring 4 传统支持更完整</p>
+<p>Spring 5 对于高并发分布式更好</p>
+<h1 id="Spring三种配置方式"><a href="#Spring三种配置方式" class="headerlink" title="Spring三种配置方式"></a>Spring三种配置方式</h1><h2 id="XML配置"><a href="#XML配置" class="headerlink" title="XML配置"></a>XML配置</h2><ul>
+<li><p>创建application.xml文件</p>
+</li>
+<li><p>操作bean</p>
+<ul>
+<li><p>创建bean（bean id class）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;edao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;类路径&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注入bean（property name ref）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;hrService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.xxxx.Service.HrService&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        向bean中注入其他bean属性--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;iEmpDAO&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;edao&quot;</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>在AppplicationContext中调用getBean使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取Spring上下文</span></span><br><span class="line"><span class="type">ApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;classpath:applicationContext.xml&quot;</span>);</span><br><span class="line"><span class="comment">//  getBean(&quot;bean的id&quot;,接口/实体类.class)</span></span><br><span class="line"><span class="type">AHrService</span> <span class="variable">aHrService</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;aHrService&quot;</span>, AHrService.class);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="注解配置"><a href="#注解配置" class="headerlink" title="注解配置"></a>注解配置</h2><h4 id="注解类型"><a href="#注解类型" class="headerlink" title="注解类型"></a>注解类型</h4><ul>
+<li>创建bean<ul>
+<li>@<strong>Repository</strong> (“name”)</li>
+<li>@<strong>Service</strong>（”name”）</li>
+<li>@<strong>Controller</strong> （”name”）</li>
+<li>@<strong>Component</strong> (“name”)</li>
+</ul>
+</li>
+<li>注入bean<ul>
+<li>@<strong>Resource</strong>(name&#x3D;”名字”)：先按bean名字搜索，在按bean类型搜索</li>
+<li>@Autowired：按bean类型搜索，在按bean名字搜索<ul>
+<li>@Qualifier：知道bean名字</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="开启注解扫描Component-scan"><a href="#开启注解扫描Component-scan" class="headerlink" title="开启注解扫描Component-scan"></a>开启注解扫描Component-scan</h4><ul>
+<li><p>在application.xml中添加</p>
+</li>
+<li><p>&#96;&#96;&#96;xml<br>&lt;context:component-scan base-package&#x3D;”扫描包的路径”&#x2F;&gt;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## javaConfig配置</span><br><span class="line"></span><br><span class="line">用java代码代替xml的配置类</span><br><span class="line"></span><br><span class="line">#### 注解类型</span><br><span class="line"></span><br><span class="line">- @**Configuration**：标记配置类</span><br><span class="line">- @**Bean**：创建方法为bean</span><br><span class="line">  - 方法名为id</span><br><span class="line">  - 方法返回值为class</span><br><span class="line">  - 注入属性方式：new个对象，调用set方法注入本配置类的方法(用this.方法)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">@Configuration</span><br><span class="line">public class SpringConfig &#123;</span><br><span class="line"></span><br><span class="line">    // id为createA class为A类</span><br><span class="line">    @Bean</span><br><span class="line">    public A createA()&#123;</span><br><span class="line">        return new A();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public B createB() &#123;</span><br><span class="line">        B b = new B();</span><br><span class="line">        b.setA(this.createA());</span><br><span class="line">        return b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="Spring的单例和多例"><a href="#Spring的单例和多例" class="headerlink" title="Spring的单例和多例"></a>Spring的单例和多例</h1><h4 id="单例和多例"><a href="#单例和多例" class="headerlink" title="单例和多例"></a>单例和多例</h4><ul>
+<li>默认IOC容器对象是单例</li>
+<li>并发环境下，<strong>单例对象自动多线程</strong>执行</li>
+<li>创建时机不同<ul>
+<li>单例：容器初始化创建</li>
+<li>多例：getBean时创建</li>
+</ul>
+</li>
+<li>通过<strong>Scope</strong>属性设置多例</li>
+</ul>
+<h4 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h4><ul>
+<li><strong>singleton</strong>：单例(默认)</li>
+<li><strong>prototype</strong>：多例</li>
+<li><strong>request</strong>：Web请求中单例</li>
+<li><strong>session</strong>：Web会话中单例</li>
+</ul>
+<h4 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h4><p>状态：对象有无私有变量（或者这个对象说存不存储东西）</p>
+<ul>
+<li>无状态适合单例</li>
+<li>有状态适合多例</li>
+</ul>
+<h4 id="code实践"><a href="#code实践" class="headerlink" title="code实践"></a>code实践</h4><ul>
+<li>xml：直接bean后面加Scope</li>
+<li>Annotaion：直接组件类上面加@Scope</li>
+<li>javaConfig：直接方法上面加@Scope</li>
+</ul>
+<h1 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h1><p>Spring的插件</p>
+<h5 id="目的-2"><a href="#目的-2" class="headerlink" title="目的"></a>目的</h5><p>在不修改源码的情况下对原程序行为进行拓展.</p>
+<h5 id="实际"><a href="#实际" class="headerlink" title="实际"></a>实际</h5><p>Aspect切面类在项目中很少直接使用,<strong>绝大多数情况下会使用基于AOP基本上的拓展产品</strong>例如:</p>
+<ul>
+<li><strong>Spring MVC Interceptor拦截器</strong></li>
+<li><strong>@Transactional 声明式事务</strong></li>
+<li><strong>@Cachable 声明式缓存</strong></li>
+</ul>
+<h5 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h5><p>在软件模块运行之前插入权限切面，运行之后日志切面.不用的时候可以取出.</p>
+<ul>
+<li>切面Aspect：切面类</li>
+<li>连接点JoinPoint：切面类和原来程序的接入点</li>
+<li>通知Advice：切面要完成的工作（也翻译叫增强）</li>
+</ul>
+<h5 id="实践code"><a href="#实践code" class="headerlink" title="实践code"></a>实践code</h5><ul>
+<li><strong>@Before</strong> 前置通知</li>
+<li><strong>@After</strong> 后置通知</li>
+<li><strong>@AfterReturning</strong> 返回后通知（和上面互斥）</li>
+<li><strong>@AfterThrowing</strong> 异常通知 (和上面互斥) </li>
+<li><strong>@Around</strong> 环绕通知<ul>
+<li>ProceedingJoinPoint</li>
+<li>proced()方法：执行目标方法，会抛出异常，也会返回对象</li>
+</ul>
+</li>
+</ul>
+<h5 id="execution"><a href="#execution" class="headerlink" title="execution()"></a>execution()</h5><ul>
+<li>返回值 包名.xx.xx.xx.类名.方法名(参数列表)</li>
+<li>..   多级列表</li>
+<li>*   任意</li>
+</ul>
+<h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><h5 id="基本概念-2"><a href="#基本概念-2" class="headerlink" title="基本概念"></a>基本概念</h5><p>是一种架构&#x2F;设计理论，不是设计模式（3类23个）</p>
+<ul>
+<li>View：视图</li>
+<li>Model：数据模型</li>
+<li>Controller：控制器</li>
+</ul>
+<h5 id="目的-3"><a href="#目的-3" class="headerlink" title="目的"></a>目的</h5><p>视图和数据解耦</p>
+<h1 id="嵌入式Web容器Jetty"><a href="#嵌入式Web容器Jetty" class="headerlink" title="嵌入式Web容器Jetty"></a>嵌入式Web容器Jetty</h1><h5 id="jetty和Tomcat"><a href="#jetty和Tomcat" class="headerlink" title="jetty和Tomcat"></a>jetty和Tomcat</h5><ul>
+<li><p>是开源的servlet容器和tomcat一样</p>
+</li>
+<li><p>Jetty容器实例化成对象，在嵌入到程序中</p>
+</li>
+<li><p>tomcat需要外部配置，并把war包加入</p>
+</li>
+</ul>
+<h5 id="和tomcat比的好处"><a href="#和tomcat比的好处" class="headerlink" title="和tomcat比的好处"></a>和tomcat比的好处</h5><ul>
+<li>开发环境好，灵活轻便（开发用jetty，生产用tomcat）</li>
+<li>方便项目转移</li>
+</ul>
+<h5 id="开发套路"><a href="#开发套路" class="headerlink" title="开发套路"></a>开发套路</h5><ul>
+<li>创建webapp目录，创建&#x2F;web-inf&#x2F;web.xml</li>
+<li>引入jetty-maven-plugin插件依赖</li>
+<li>用插件中的Jetty：run启用嵌入式web应用</li>
+<li>修改为输出war包</li>
+<li>解决热部署</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.eclipse.jetty<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jetty-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">version</span>&gt;</span>9.4.43.v20210629<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--                   加载webapp文件下的html css js --&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">webAppSourceDirectory</span>&gt;</span>src/main/webapp<span class="tag">&lt;/<span class="name">webAppSourceDirectory</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">httpConnector</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">port</span>&gt;</span>8080<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;/<span class="name">httpConnector</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--                   解决热更新问题--&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">webApp</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;<span class="name">_initParams</span>&gt;</span></span><br><span class="line">                          <span class="tag">&lt;<span class="name">org.eclipse.jetty.servlet.Default.useFileMappedBuffer</span>&gt;</span>false<span class="tag">&lt;/<span class="name">org.eclipse.jetty.servlet.Default.useFileMappedBuffer</span>&gt;</span></span><br><span class="line">                       <span class="tag">&lt;/<span class="name">_initParams</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;/<span class="name">webApp</span>&gt;</span></span><br><span class="line"></span><br><span class="line">               <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>![屏幕截图 2022-01-06 223815](D:\TyporaOfimage\屏幕截图 2022-01-06 223815.png)</p>
+<h1 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h1><p>Spring MVC是轻量级Web MVC框架,替代servlet</p>
+<h5 id="使用制造"><a href="#使用制造" class="headerlink" title="使用制造"></a>使用制造</h5><ul>
+<li><p>接收客户端&#x2F;浏览器请求</p>
+</li>
+<li><p>处理请求</p>
+</li>
+<li><p>产生响应</p>
+</li>
+</ul>
+<p>底层:基于Spirng IOC容器管理</p>
+<h5 id="搭建套路"><a href="#搭建套路" class="headerlink" title="搭建套路"></a>搭建套路</h5><ol>
+<li><p>加入Spring-webmvc依赖</p>
+</li>
+<li><p>web.xml配置核心组件<strong>DispatcherServlet</strong></p>
+<ul>
+<li>对web请求进行拦截</li>
+<li>将请求转发给Controller对象</li>
+</ul>
+</li>
+<li><p>配置applicationContext的MVC标记</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    组件扫描--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.xxxx&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    启动Spring MVC的注解模式--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    对静态文件(html，css,js)不扫描 提高执行效率--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:default-servlet-handler</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>web.xml文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns</span>=<span class="string">&quot;http://java.sun.com/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">id</span>=<span class="string">&quot;WebApp_ID&quot;</span> <span class="attr">version</span>=<span class="string">&quot;3.0&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        配置文件--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        启动等级--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>0<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    拦截请求范围--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    配置文件整体含义:</span></span><br><span class="line"><span class="comment">    DispatcherServlet对系统中所有请求进行拦截</span></span><br><span class="line"><span class="comment">    Servlet自动加载applicationContext.xml文件</span></span><br><span class="line"><span class="comment">    并且在Web容器加载的时候，优先加载.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="请求数据和响应数据"><a href="#请求数据和响应数据" class="headerlink" title="请求数据和响应数据"></a>请求数据和响应数据</h1><h2 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h2><h5 id="GET和POST请求"><a href="#GET和POST请求" class="headerlink" title="GET和POST请求"></a>GET和POST请求</h5><ul>
+<li>GET将请求内容存储在<strong>URL</strong>中</li>
+<li>POST将请求内容存储在<strong>请求体</strong>(from data)中</li>
+</ul>
+<h5 id="URL绑定"><a href="#URL绑定" class="headerlink" title="URL绑定"></a>URL绑定</h5><ul>
+<li>类级别<ul>
+<li><strong>@RequestMapping</strong>(“路径”)</li>
+</ul>
+</li>
+<li>方法级别<ul>
+<li><strong>@GetMapping</strong>(“路径”)</li>
+<li><strong>@PostMapping</strong>(“路径”)</li>
+</ul>
+</li>
+</ul>
+<h5 id="请求方式"><a href="#请求方式" class="headerlink" title="请求方式"></a>请求方式</h5><ul>
+<li>参数接收<ul>
+<li><strong>@RequestParam(“key值”)</strong></li>
+</ul>
+</li>
+<li>Java Bean接收(对象接收)</li>
+<li>路径变量接收（Restful开发风格）<ul>
+<li>在XXXMapping路径添加变量{变量名}</li>
+<li>参数列表添加**@PathVariable**</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/toRequest&quot;)</span></span><br><span class="line"><span class="keyword">public</span> ModelAndView <span class="title function_">toRequest</span><span class="params">(<span class="meta">@RequestParam(&quot;text&quot;)</span> String text)</span> &#123;</span><br><span class="line">    <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;/RequestPage&quot;</span>);</span><br><span class="line">    modelAndView.addObject(<span class="string">&quot;text&quot;</span>, text);</span><br><span class="line">    <span class="keyword">return</span> modelAndView;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/toJavaBean&quot;)</span></span><br><span class="line"><span class="keyword">public</span> ModelAndView <span class="title function_">toJavaBean</span><span class="params">(User user)</span>&#123;</span><br><span class="line">    <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;/RequestPage&quot;</span>);</span><br><span class="line">    modelAndView.addObject(<span class="string">&quot;user&quot;</span>, user);</span><br><span class="line">    <span class="keyword">return</span> modelAndView;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/toRestful/&#123;text&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> ModelAndView <span class="title function_">toRestful</span><span class="params">(<span class="meta">@PathVariable(&quot;text&quot;)</span>String text)</span>&#123;</span><br><span class="line">    <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;/RequestPage&quot;</span>);</span><br><span class="line">    modelAndView.addObject(<span class="string">&quot;text&quot;</span>, text);</span><br><span class="line">    <span class="keyword">return</span> modelAndView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="响应数据"><a href="#响应数据" class="headerlink" title="响应数据"></a>响应数据</h2><h5 id="响应方式"><a href="#响应方式" class="headerlink" title="响应方式"></a>响应方式</h5><ul>
+<li><strong>@ResponseBody</strong>：产生响应文本（在方法中使用），也就是返回字符串<ul>
+<li><strong>返回JSON</strong>字符串：引入<strong>jackson</strong></li>
+</ul>
+</li>
+<li><strong>ModelAndView</strong>：利用模板引擎渲染输出<ul>
+<li>生产<strong>ModelAndView对象</strong>，添加跳转页面</li>
+<li>调用<strong>addObject（key，响应内容）</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/json&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> User <span class="title function_">getJosn</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">User</span> <span class="variable">ifUser</span> <span class="operator">=</span> ifService.getIfUser(<span class="number">1000L</span>);</span><br><span class="line">    <span class="keyword">return</span> ifUser;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/test&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> ModelAndView <span class="title function_">getTest</span><span class="params">()</span>&#123;</span><br><span class="line">     <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>(<span class="string">&quot;/test&quot;</span>);</span><br><span class="line">        modelAndView.addObject(<span class="string">&quot;mytest&quot;</span>, <span class="string">&quot;测试&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> modelAndView;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="json依赖"><a href="#json依赖" class="headerlink" title="json依赖"></a>json依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-annotations<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.12.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><h5 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h5><ul>
+<li>通过 <strong>模板+数据</strong> 通过<strong>模板引擎</strong> 得到<strong>结果</strong></li>
+<li>将模板和数据进行解耦</li>
+</ul>
+<h5 id="主流使用"><a href="#主流使用" class="headerlink" title="主流使用"></a>主流使用</h5><ul>
+<li>JSP(Java Server Page)——J2EE组件</li>
+<li>Freemarker——用的人多</li>
+<li>Beetl</li>
+<li>thymealeaf——Spring Boot推荐</li>
+</ul>
+<h3 id="Freemarker"><a href="#Freemarker" class="headerlink" title="Freemarker"></a>Freemarker</h3><h4 id="引入依赖和配置"><a href="#引入依赖和配置" class="headerlink" title="引入依赖和配置"></a>引入依赖和配置</h4><h5 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h5><ul>
+<li>spring-context-support</li>
+<li>freemarker</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.31<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context-support<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.3.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="applicationContext配置"><a href="#applicationContext配置" class="headerlink" title="applicationContext配置"></a>applicationContext配置</h5><ul>
+<li>配置<strong>FreeMarkerViewResolver</strong>和<strong>FreeMarkerConfigurer</strong></li>
+<li>在<strong>web-inf&#x2F;ftl</strong>目录添加freemarker模板（拓展名为.ftl文件）</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    在IOC容器初始化时通知SpringMVC默认使用Freemarker进行数据展示--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;viewResolver&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        渲染完成的结果向客户端输出的时候设置UTF-8字符集--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;contentType&quot;</span> <span class="attr">value</span>=<span class="string">&quot;text/html;charset=utf-8&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        指定Freemarker模板文件拓展名--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.ftl&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--    freemarker配置文件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;freeMarkerConfigurer&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        模板引擎文件保存路径--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;templateLoaderPath&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/WEB-INF/ftl&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        其他模板引擎设置--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;freemarkerSettings&quot;</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--                设置Freemarker脚本和数据渲染时使用的字符集--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;defaultEncoding&quot;</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><h5 id="三个取值语法"><a href="#三个取值语法" class="headerlink" title="三个取值语法"></a>三个取值语法</h5><ul>
+<li>${变量}</li>
+<li>${变量!默认值}</li>
+<li>${变量？强制转换类型&#x2F;函数}</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;user.password&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;user.price!&quot;(数据为空时)测试默认值&quot;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;user.date?string(&quot;yyyy年MM月dd日&quot;)&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="调剂判断"><a href="#调剂判断" class="headerlink" title="调剂判断"></a>调剂判断</h5><ul>
+<li><strong>&lt;#if 条件判断 &gt;包围</strong><ul>
+<li><strong>&lt;#elseif 条件判断&gt;</strong></li>
+<li><strong>&lt;#else&gt;</strong></li>
+</ul>
+</li>
+</ul>
+<h6 id="调剂判断-1"><a href="#调剂判断-1" class="headerlink" title="调剂判断"></a>调剂判断</h6><ul>
+<li>括号</li>
+<li><strong>变量？？</strong>：判断对象为空的方式</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;#if ifuser.price?? &gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>用户余额等于1000<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &lt;#elseif (ifuser.price&gt;1000)&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>用户余额:$&#123;ifuser.price&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &lt;#else&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>用户余额不足1000<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&lt;/#if&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h5><ul>
+<li><p>&lt;ul&gt;或者&lt;ol&gt;</p>
+</li>
+<li><p><strong>&lt;#list 集合变量 as 单个变量&gt;包围</strong></p>
+<ul>
+<li>&lt;li&gt;</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    &lt;#list users as u&gt;</span><br><span class="line">         <span class="tag">&lt;<span class="name">li</span>&gt;</span>$&#123;u_index + 1&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>$&#123;u.username&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>$&#123;u.password&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>$&#123;u.date?string(&quot;yyyy年MM月dd日&quot;)&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>$&#123;u.price&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line">    &lt;/#list&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="include子页面"><a href="#include子页面" class="headerlink" title="include子页面"></a>include子页面</h5><p>实现页首和页尾</p>
+<ul>
+<li><strong>&lt;#include “其他ftl页面”&gt;</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;#include &quot;OtherPage/header.ftl&quot;&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;user.username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;user.password&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;user.date?string(&quot;yyyy年MM月dd日&quot;)&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>$&#123;user.price&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&lt;#include &quot;OtherPage/floot.ftl&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h5><table>
+<thead>
+<tr>
+<th>作用</th>
+<th>函数名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>大小写转换</td>
+<td>lower_case&#x2F;upper_case</td>
+</tr>
+<tr>
+<td>首字母大写</td>
+<td>cap_first</td>
+</tr>
+<tr>
+<td>查找字符串索引</td>
+<td>index_of</td>
+</tr>
+<tr>
+<td>返回字符串长度</td>
+<td>length</td>
+</tr>
+<tr>
+<td>四舍五入&#x2F;下取整&#x2F;上取整</td>
+<td>round&#x2F;floor&#x2F;ceiling</td>
+</tr>
+<tr>
+<td>得到集合元素总数</td>
+<td>size</td>
+</tr>
+<tr>
+<td>获取第一个&#x2F;最后一个元素</td>
+<td>first&#x2F;last</td>
+</tr>
+<tr>
+<td>按某个属性对集合排序</td>
+<td>sort_by</td>
+</tr>
+</tbody></table>
+<h2 id="日期数据处理"><a href="#日期数据处理" class="headerlink" title="日期数据处理"></a>日期数据处理</h2><h5 id="Pojo对象处理"><a href="#Pojo对象处理" class="headerlink" title="Pojo对象处理"></a>Pojo对象处理</h5><ul>
+<li><strong>DateTimeFormat</strong>(pattern&#x3D;”日期格式”)</li>
+<li><strong>JsonFormat</strong>(pattern&#x3D;”日期格式”，timezone&#x3D;”时区”)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//    传入数据进行转换</span></span><br><span class="line">    <span class="meta">@DateTimeFormat(pattern = &quot;yyyyMMdd&quot;)</span></span><br><span class="line"><span class="comment">//    发出数据</span></span><br><span class="line">    <span class="meta">@JsonFormat(pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;,timezone = &quot;GMT+8&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Date date;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="freemark处理"><a href="#freemark处理" class="headerlink" title="freemark处理"></a>freemark处理</h5><ul>
+<li>${变量？string（”日期格式“）}</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>$&#123;u.date?string(&quot;yyyy年MM月dd日&quot;)&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><ul>
+<li>mysql连接</li>
+<li>mybatis</li>
+<li>junit单元测试</li>
+<li>logback日志显示(显示sql)</li>
+<li>pageHelper分页插件</li>
+<li>jsqlparser分页插件依赖</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.25<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Mybatis配置文件和配置"><a href="#Mybatis配置文件和配置" class="headerlink" title="Mybatis配置文件和配置"></a>Mybatis配置文件和配置</h3><ul>
+<li>创建mybatis-config.xml文件</li>
+<li>配置环境（方便开发和生产环境切换）<ul>
+<li>设置默认环境</li>
+<li>设置环境<ul>
+<li>设置事务管理器的提交和回滚：JDBC</li>
+<li>设置数据源的连接池POOLED</li>
+<li>设置基本mysql的基本属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>开启驼峰命名法</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        开启驼峰命名法转换 官网有--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;mapUnderscoreToCamelCase&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">&lt;!--    设置环境 默认环境(方便不同数据库环境使用)--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;dev&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        设置开发dev环境--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;dev&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            事务管理器——进行事务提交和回滚--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            数据源 POOLED连接池来连接数据库--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/数据库名?useUnicode=true<span class="symbol">&amp;amp;</span>characterEncoding=UTF-8&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;数据库账号&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;数据库密码&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：由于涉及到转译问题，&amp;要写成&amp;amp;</p>
+<h3 id="使用Mybatis"><a href="#使用Mybatis" class="headerlink" title="使用Mybatis"></a>使用Mybatis</h3><h4 id="创建Pojo类"><a href="#创建Pojo类" class="headerlink" title="创建Pojo类"></a>创建Pojo类</h4><ul>
+<li>私有属性要和数据库的字段名保持驼峰命名法</li>
+<li>GET和SET方法</li>
+</ul>
+<h4 id="在resource创建对应的mapper类"><a href="#在resource创建对应的mapper类" class="headerlink" title="在resource创建对应的mapper类"></a>在resource创建对应的mapper类</h4><ul>
+<li>mapper标签</li>
+<li>设置命名空间namespace</li>
+<li>在mybatis的配置文件进行映射</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--映射器--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--命名空间namespace--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;goods&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;mappers/goods.xml&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="进行Jetty单元测试"><a href="#进行Jetty单元测试" class="headerlink" title="进行Jetty单元测试"></a>进行Jetty单元测试</h4><ul>
+<li>读取mybatis配置文件</li>
+<li>获得<strong>sqlSessionFactroy</strong></li>
+<li>获得<strong>sqlSession</strong>对象：调用sqlSessionFacroty的<strong>openSession</strong>方法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="type">SqlSessionFactory</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    BeforeClass用于在Junit启用测试用例前执行一次全局初始化工作，来创建sqlSessionFactory对象</span></span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//        读取mybatis配置文件,初始化mybatis对象</span></span><br><span class="line">        <span class="type">Reader</span> <span class="variable">resourceAsReader</span> <span class="operator">=</span> Resources.getResourceAsReader(<span class="string">&quot;mybatis-config.xml&quot;</span>);</span><br><span class="line">        <span class="comment">//        创建对应Session对象</span></span><br><span class="line">        sqlSessionFactory = <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(resourceAsReader);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//    测试会话工厂(核心类)</span></span><br><span class="line"><span class="comment">//    作用:帮助创建数据库连接</span></span><br><span class="line"><span class="comment">//    获取对应的Session会话对象</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">SqlSession</span> <span class="variable">sqlSession</span> <span class="operator">=</span> sqlSessionFactory.openSession();<span class="comment">//打开会话</span></span><br><span class="line">        <span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> sqlSession.getConnection();<span class="comment">//获得原始数据库连接</span></span><br><span class="line">        System.out.println(connection);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查操作"><a href="#查操作" class="headerlink" title="查操作"></a>查操作</h5><ul>
+<li>在mapper中添加select</li>
+<li>添加sql语句</li>
+<li>调用sqlSession对象中的方法<ul>
+<li>selectList（”命名空间.mapper的id”）：获取多个对象</li>
+<li>selectOne（”命名空间.mapper的id”）：获得单个对象</li>
+</ul>
+</li>
+<li>获得参数</li>
+<li>关闭sqlSession</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFindAll</span><span class="params">()</span> &#123;</span><br><span class="line">        SqlSession sqlSession=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//        openSession创建一个新的sqlSession对象，SqlSession提供了增删改查的方法调用</span></span><br><span class="line">             sqlSession = sqlSessionFactory.openSession();</span><br><span class="line"><span class="comment">//        goods为mapper的命名空间，里面的findAll方法</span></span><br><span class="line"><span class="comment">//        通过命名空间来区别不同的findAll方法</span></span><br><span class="line">            PageHelper.startPage(<span class="number">2</span>, <span class="number">10</span>);</span><br><span class="line">            List&lt;Goods&gt; goods = sqlSession.selectList(<span class="string">&quot;goods.findAll&quot;</span>);</span><br><span class="line">            goods.stream().forEach(goods1 -&gt; &#123;</span><br><span class="line">                System.out.println(goods1.getGoodsId()+<span class="string">&quot; - &quot;</span>+goods1.getTitle());</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sqlSession != <span class="literal">null</span>) &#123;</span><br><span class="line"><span class="comment">//                将这个Connection归还给连接池 供其他Session使用</span></span><br><span class="line">                sqlSession.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findAll&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.xxxx.SpringMVC.Mybatis.Pojo.Goods&quot;</span>&gt;</span></span><br><span class="line">    select *</span><br><span class="line">    from t_goods</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="插操作"><a href="#插操作" class="headerlink" title="插操作"></a>插操作</h5><ul>
+<li><p>在mapper添加insert</p>
+</li>
+<li><p>添加sql语句</p>
+</li>
+<li><p>使用selectKey返回sql生产的key值（在高并发环境下防止id混乱）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">resultType</span>=<span class="string">&quot;int&quot;</span> <span class="attr">keyProperty</span>=<span class="string">&quot;id字段&quot;</span> <span class="attr">order</span>=<span class="string">&quot;AFTER&quot;</span>&gt;</span></span><br><span class="line">        -- 当前连接中最后产生的id号</span><br><span class="line">        select last_insert_id()</span><br><span class="line">    <span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用sqlSession的insert方法</p>
+<ul>
+<li>单个参数：sqlSession.insert(“命名空间.mapper的id”，插入对象)</li>
+<li>多个参数Map：sqlSession.insert(“命名空间.mapper的id”，插入Map对象)</li>
+</ul>
+</li>
+<li><p>事务提交&#x2F;回滚commit</p>
+</li>
+<li><p>关闭sqlSession</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testInsert</span><span class="params">()</span> &#123;</span><br><span class="line">        SqlSession sqlSession=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">            <span class="type">Goods</span> <span class="variable">goods</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Goods</span>();</span><br><span class="line">            goods.setTitle(<span class="string">&quot;测试商品&quot;</span>);</span><br><span class="line">            goods.setSubTitle(<span class="string">&quot;测试子标题&quot;</span>);</span><br><span class="line">            goods.setOriginalCost(<span class="number">200f</span>);</span><br><span class="line">            goods.setCurrentPrice(<span class="number">100f</span>);</span><br><span class="line">            goods.setDiscount(<span class="number">0.5f</span>);</span><br><span class="line">            goods.setIsFreeDelivery(<span class="number">1</span>);</span><br><span class="line">            goods.setCategoryId(<span class="number">43</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> sqlSession.insert(<span class="string">&quot;goods.insert&quot;</span>, goods);</span><br><span class="line">            System.out.println(result);</span><br><span class="line">            System.out.println(goods.getGoodsId());</span><br><span class="line"><span class="comment">//            写操作千万别忘记提交或回滚事务</span></span><br><span class="line">            sqlSession.commit();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">if</span>(sqlSession!=<span class="literal">null</span>)&#123;</span><br><span class="line"><span class="comment">//                回滚</span></span><br><span class="line">                sqlSession.rollback();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sqlSession != <span class="literal">null</span>) &#123;</span><br><span class="line"><span class="comment">//                将这个Connection归还给连接池 供其他Session使用</span></span><br><span class="line">                sqlSession.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;insert&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.xxxx.SpringMVC.Mybatis.Pojo.Goods&quot;</span>&gt;</span></span><br><span class="line">    INSERT INTO `babytun`.`t_goods`(`title`, `sub_title`, `original_cost`, `current_price`, `discount`,</span><br><span class="line">    `is_free_delivery`, `category_id`)</span><br><span class="line">    VALUES (#&#123;title&#125;, #&#123;subTitle&#125;, #&#123;originalCost&#125;, #&#123;currentPrice&#125;, #&#123;discount&#125;, #&#123;isFreeDelivery&#125;, #&#123;categoryId&#125;);</span><br><span class="line">    -- 插入数据后马上执行下面的查询key的操作(在高并发环境下防止id混乱)</span><br><span class="line">    <span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">resultType</span>=<span class="string">&quot;int&quot;</span> <span class="attr">keyProperty</span>=<span class="string">&quot;goodsId&quot;</span> <span class="attr">order</span>=<span class="string">&quot;AFTER&quot;</span>&gt;</span></span><br><span class="line">        -- 当前连接中最后产生的id号</span><br><span class="line">        select last_insert_id()</span><br><span class="line">    <span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="改操作"><a href="#改操作" class="headerlink" title="改操作"></a>改操作</h5><ul>
+<li>先通过id查出来<ul>
+<li>添加mapper的select</li>
+<li>添加select的sql语句</li>
+<li>调用sqlSession的selectOne（”命名空间.mapper的id”，id参数）</li>
+<li>获得参数对象并修改</li>
+</ul>
+</li>
+<li>再改<ul>
+<li>添加mapper的update</li>
+<li>添加update的sql语句</li>
+<li>调用sqlSession的update（”命名空间.mapper的id“，修改后的参数对象）</li>
+<li>事务提交和管理commit</li>
+<li>关闭sqlSession</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testUpdate</span><span class="params">()</span> &#123;</span><br><span class="line">        SqlSession sqlSession=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">            Goods goods=sqlSession.selectOne(<span class="string">&quot;goods.findById&quot;</span>,<span class="number">2677</span>);</span><br><span class="line">            goods.setTitle(<span class="string">&quot;更新后的商品标题&quot;</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> sqlSession.update(<span class="string">&quot;goods.update&quot;</span>, goods);</span><br><span class="line">            System.out.println(result);</span><br><span class="line"></span><br><span class="line"><span class="comment">//            写操作千万别忘记提交或回滚事务</span></span><br><span class="line">            sqlSession.commit();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">if</span>(sqlSession!=<span class="literal">null</span>)&#123;</span><br><span class="line"><span class="comment">//                回滚</span></span><br><span class="line">                sqlSession.rollback();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sqlSession != <span class="literal">null</span>) &#123;</span><br><span class="line"><span class="comment">//                将这个Connection归还给连接池 供其他Session使用</span></span><br><span class="line">                sqlSession.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    获取数据--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findById&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;java.lang.Integer&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.xxxx.SpringMVC.Mybatis.Pojo.Goods&quot;</span>&gt;</span></span><br><span class="line">    --</span><br><span class="line">    select *</span><br><span class="line">    from t_goods</span><br><span class="line">    where goods_id = #&#123;value&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;update&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.xxxx.SpringMVC.Mybatis.Pojo.Goods&quot;</span>&gt;</span></span><br><span class="line">    UPDATE `babytun`.`t_goods`</span><br><span class="line">    SET `title`            = #&#123;title&#125;,</span><br><span class="line">        `sub_title`        = #&#123;subTitle&#125;,</span><br><span class="line">        `original_cost`    = #&#123;originalCost&#125;,</span><br><span class="line">        `current_price`    = #&#123;currentPrice&#125;,</span><br><span class="line">        `discount`         = #&#123;discount&#125;,</span><br><span class="line">        `is_free_delivery` = #&#123;isFreeDelivery&#125;,</span><br><span class="line">        `category_id`      = #&#123;categoryId&#125;</span><br><span class="line">    WHERE `goods_id` = #&#123;goodsId&#125;;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="删操作"><a href="#删操作" class="headerlink" title="删操作"></a>删操作</h5><ul>
+<li>添加mapper的delete</li>
+<li>添加sql语句</li>
+<li>调用sqlSession的delete（”命名空间.mapper的id”，id参数）</li>
+<li>获得结果参数</li>
+<li>事务提交和管理commit</li>
+<li>关闭sqlSession</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testDelete</span><span class="params">()</span> &#123;</span><br><span class="line">        SqlSession sqlSession=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">            <span class="type">int</span> <span class="variable">delete</span> <span class="operator">=</span> sqlSession.delete(<span class="string">&quot;goods.delete&quot;</span>, <span class="number">2677</span>);</span><br><span class="line">            System.out.println(delete);</span><br><span class="line"><span class="comment">//            写操作千万别忘记提交或回滚事务</span></span><br><span class="line">            sqlSession.commit();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">if</span>(sqlSession!=<span class="literal">null</span>)&#123;</span><br><span class="line"><span class="comment">//                回滚</span></span><br><span class="line">                sqlSession.rollback();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sqlSession != <span class="literal">null</span>) &#123;</span><br><span class="line"><span class="comment">//                将这个Connection归还给连接池 供其他Session使用</span></span><br><span class="line">                sqlSession.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;delete&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;Integer&quot;</span>&gt;</span></span><br><span class="line">    delete</span><br><span class="line">    from t_goods</span><br><span class="line">    where goods_id = #&#123;value&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="输入参数和输出参数，多参数"><a href="#输入参数和输出参数，多参数" class="headerlink" title="输入参数和输出参数，多参数"></a>输入参数和输出参数，多参数</h5><ul>
+<li><strong>parameterType</strong>：输入参数类型(完整包名，基本类型:_类型，基本类型包装类：类型)</li>
+<li><strong>resultType</strong>：输出参数类型(完整包名，基本类型:_类型，基本类型包装类：类型)</li>
+<li>Map输入多参数<ul>
+<li>设置parameterType为java.util.Map</li>
+<li>输入HashMap对象<ul>
+<li>HashMap对象.put(“添加参数名”，添加参数)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findByPriceRange&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;java.util.Map&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.xxxx.SpringMVC.Mybatis.Pojo.Goods&quot;</span>&gt;</span></span><br><span class="line">    select *</span><br><span class="line">    from t_goods</span><br><span class="line">    where current_price between #&#123;min&#125; and #&#123;max&#125;</span><br><span class="line">    order by current_price limit 0,#&#123;limt&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sqlSession = sqlSessionFactory.openSession();</span><br><span class="line"><span class="type">Map</span> <span class="variable">map</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">map.put(<span class="string">&quot;min&quot;</span>, <span class="number">100</span>);</span><br><span class="line">map.put(<span class="string">&quot;max&quot;</span>, <span class="number">500</span>);</span><br><span class="line">map.put(<span class="string">&quot;limt&quot;</span>, <span class="number">10</span>);</span><br><span class="line">List&lt;Goods&gt; goods = sqlSession.selectList(<span class="string">&quot;goods.findByPriceRange&quot;</span>, map);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="和-区别"><a href="#和-区别" class="headerlink" title="#{}和${}区别"></a>#{}和${}区别</h5><ul>
+<li>#{}:预编译sql语句</li>
+<li>${}:替换sql语句</li>
+</ul>
+<p>一般用#{}，少使用${},一般使用${}可以当作添加sql，但是不能开放给前端.（小心sql注入）</p>
+<h5 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h5><ul>
+<li><p><strong>if</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;title != null&quot;</span>&gt;</span></span><br><span class="line">   AND title like #&#123;title&#125;</span><br><span class="line"> <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>choose,when,otherwise</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">choose</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">&quot;title != null&quot;</span>&gt;</span></span><br><span class="line">      AND title like #&#123;title&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">when</span> <span class="attr">test</span>=<span class="string">&quot;author != null and author.name != null&quot;</span>&gt;</span></span><br><span class="line">      AND author_name like #&#123;author.name&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">when</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">otherwise</span>&gt;</span></span><br><span class="line">      AND featured = 1</span><br><span class="line">    <span class="tag">&lt;/<span class="name">otherwise</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">choose</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>foreach</strong></p>
+<ul>
+<li>item：单个对象</li>
+<li>index：下标</li>
+<li>collection：集合</li>
+<li>open：拼接sql最开头添加</li>
+<li>separator：分隔符号</li>
+<li>close：拼接sql最后添加</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">item</span>=<span class="string">&quot;item&quot;</span> <span class="attr">index</span>=<span class="string">&quot;index&quot;</span> <span class="attr">collection</span>=<span class="string">&quot;list&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">open</span>=<span class="string">&quot;ID in (&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;,&quot;</span> <span class="attr">close</span>=<span class="string">&quot;)&quot;</span> <span class="attr">nullable</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">          #&#123;item&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h6 id="消除and影响"><a href="#消除and影响" class="headerlink" title="消除and影响"></a>消除and影响</h6><p>有时候满足条件后的sql语句会包含前置的sql语句 “AND” 这个，消去方法:</p>
+<ul>
+<li>where 1&#x3D;1</li>
+<li>用where标签包围</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findActiveBlogLike&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">resultType</span>=<span class="string">&quot;Blog&quot;</span>&gt;</span></span><br><span class="line">  SELECT * FROM BLOG</span><br><span class="line">  <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;state != null&quot;</span>&gt;</span></span><br><span class="line">       AND  state = #&#123;state&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;title != null&quot;</span>&gt;</span></span><br><span class="line">        AND title like #&#123;title&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findActiveBlogLike&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">resultType</span>=<span class="string">&quot;Blog&quot;</span>&gt;</span></span><br><span class="line">  SELECT * FROM BLOG</span><br><span class="line">   where 1=1</span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;state != null&quot;</span>&gt;</span></span><br><span class="line">       AND  state = #&#123;state&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;title != null&quot;</span>&gt;</span></span><br><span class="line">        AND title like #&#123;title&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="分页插件PageHelper"><a href="#分页插件PageHelper" class="headerlink" title="分页插件PageHelper"></a>分页插件PageHelper</h4><h5 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h5><ul>
+<li>在mybatis的配置文件添加插件<ul>
+<li>设置数据库类型helperDialect</li>
+<li>分页合理化reasonable：点击超过页数限制的页数就去最大页数（小于第0页同理）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        对sql拦截以及设置--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span> <span class="attr">interceptor</span>=<span class="string">&quot;com.github.pagehelper.PageInterceptor&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;helperDialect&quot;</span>  <span class="attr">value</span>=<span class="string">&quot;mysql&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--            分页合理化(超过最大页数就去最大页)--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;reasonable&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">            </span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="在sqlSession-XXXXX之前添加"><a href="#在sqlSession-XXXXX之前添加" class="headerlink" title="在sqlSession.XXXXX之前添加"></a>在sqlSession.XXXXX之前添加</h5><ul>
+<li><strong>PageHelper.startPage</strong>(第几页, 每一页的size);</li>
+</ul>
+<h5 id="背后执行sql"><a href="#背后执行sql" class="headerlink" title="背后执行sql"></a>背后执行sql</h5><ul>
+<li>先查询行总数</li>
+<li>实践sql限制LIMIT</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT count(0) FROM t_goods //效率高</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preparing: select * from t_goods LIMIT ?, ? </span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFindAll</span><span class="params">()</span> &#123;</span><br><span class="line">        SqlSession sqlSession=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//        openSession创建一个新的sqlSession对象，SqlSession提供了增删改查的方法调用</span></span><br><span class="line">             sqlSession = sqlSessionFactory.openSession();</span><br><span class="line"><span class="comment">//        goods为mapper的命名空间，里面的findAll方法</span></span><br><span class="line"><span class="comment">//        通过命名空间来区别不同的findAll方法</span></span><br><span class="line">            PageHelper.startPage(<span class="number">2</span>, <span class="number">10</span>);</span><br><span class="line">            List&lt;Goods&gt; goods = sqlSession.selectList(<span class="string">&quot;goods.findAll&quot;</span>);</span><br><span class="line">            goods.stream().forEach(goods1 -&gt; &#123;</span><br><span class="line">                System.out.println(goods1.getGoodsId()+<span class="string">&quot; - &quot;</span>+goods1.getTitle());</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (sqlSession != <span class="literal">null</span>) &#123;</span><br><span class="line"><span class="comment">//                将这个Connection归还给连接池 供其他Session使用</span></span><br><span class="line">                sqlSession.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</div><div class="article-licensing box"><div class="licensing-title"><p>SSM重新学习</p><p><a href="https://liust1918.github.io/Liust1918.githud.io/2022/12/04/SSM重新学习/">https://liust1918.github.io/Liust1918.githud.io/2022/12/04/SSM重新学习/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2022-12-04</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-12-04</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Liust1918.githud.io/tags/java/">java</a><a class="link-muted mr-2" rel="tag" href="/Liust1918.githud.io/tags/%E5%90%8E%E7%AB%AF/">后端</a><a class="link-muted mr-2" rel="tag" href="/Liust1918.githud.io/tags/SSM/">SSM</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/Liust1918.githud.io/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Liust1918.githud.io/2022/12/04/SSM/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">SSM</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Liust1918.githud.io/2022/12/04/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/"><span class="level-item">买卖股票的最佳时机IV</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Liust1918"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Liust1918</p><p class="is-size-6 is-block">Web Developer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Ice Earth</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/Liust1918.githud.io/archives"><p class="title">20</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/Liust1918.githud.io/categories"><p class="title">13</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/Liust1918.githud.io/tags"><p class="title">18</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Liust1918" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/Liust1918.githud.io/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#SSM重新学习"><span class="level-left"><span class="level-item">1</span><span class="level-item">SSM重新学习</span></span></a></li><li><a class="level is-mobile" href="#Maven"><span class="level-left"><span class="level-item">2</span><span class="level-item">Maven</span></span></a></li><li><a class="level is-mobile" href="#IOC-Inversion-Of-Control-控制反转"><span class="level-left"><span class="level-item">3</span><span class="level-item">IOC(Inversion Of Control)控制反转</span></span></a></li><li><a class="level is-mobile" href="#Spring-5"><span class="level-left"><span class="level-item">4</span><span class="level-item">Spring 5</span></span></a></li><li><a class="level is-mobile" href="#Spring三种配置方式"><span class="level-left"><span class="level-item">5</span><span class="level-item">Spring三种配置方式</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#XML配置"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">XML配置</span></span></a></li><li><a class="level is-mobile" href="#注解配置"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">注解配置</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Spring的单例和多例"><span class="level-left"><span class="level-item">6</span><span class="level-item">Spring的单例和多例</span></span></a></li><li><a class="level is-mobile" href="#Spring-AOP"><span class="level-left"><span class="level-item">7</span><span class="level-item">Spring AOP</span></span></a></li><li><a class="level is-mobile" href="#MVC"><span class="level-left"><span class="level-item">8</span><span class="level-item">MVC</span></span></a></li><li><a class="level is-mobile" href="#嵌入式Web容器Jetty"><span class="level-left"><span class="level-item">9</span><span class="level-item">嵌入式Web容器Jetty</span></span></a></li><li><a class="level is-mobile" href="#Spring-MVC"><span class="level-left"><span class="level-item">10</span><span class="level-item">Spring MVC</span></span></a></li><li><a class="level is-mobile" href="#请求数据和响应数据"><span class="level-left"><span class="level-item">11</span><span class="level-item">请求数据和响应数据</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#请求数据"><span class="level-left"><span class="level-item">11.1</span><span class="level-item">请求数据</span></span></a></li><li><a class="level is-mobile" href="#响应数据"><span class="level-left"><span class="level-item">11.2</span><span class="level-item">响应数据</span></span></a></li><li><a class="level is-mobile" href="#模板引擎"><span class="level-left"><span class="level-item">11.3</span><span class="level-item">模板引擎</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Freemarker"><span class="level-left"><span class="level-item">11.3.1</span><span class="level-item">Freemarker</span></span></a></li></ul></li><li><a class="level is-mobile" href="#日期数据处理"><span class="level-left"><span class="level-item">11.4</span><span class="level-item">日期数据处理</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Mybatis"><span class="level-left"><span class="level-item">12</span><span class="level-item">Mybatis</span></span></a><ul class="menu-list"><ul class="menu-list"><li><a class="level is-mobile" href="#引入依赖"><span class="level-left"><span class="level-item">12.1.1</span><span class="level-item">引入依赖</span></span></a></li><li><a class="level is-mobile" href="#Mybatis配置文件和配置"><span class="level-left"><span class="level-item">12.1.2</span><span class="level-item">Mybatis配置文件和配置</span></span></a></li><li><a class="level is-mobile" href="#使用Mybatis"><span class="level-left"><span class="level-item">12.1.3</span><span class="level-item">使用Mybatis</span></span></a></li></ul></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/Liust1918.githud.io/js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://github.com/Liust1918" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Githud</span></span><span class="level-right"><span class="level-item tag">github.com</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/Android/"><span class="level-start"><span class="level-item">Android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/C%E8%AF%AD%E8%A8%80/"><span class="level-start"><span class="level-item">C语言</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/Hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/LeetCode/"><span class="level-start"><span class="level-item">LeetCode</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/java/"><span class="level-start"><span class="level-item">java</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/java/java8/"><span class="level-start"><span class="level-item">java8</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/"><span class="level-start"><span class="level-item">后端</span></span><span class="level-end"><span class="level-item tag">5</span></span></a><ul><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/SSM/"><span class="level-start"><span class="level-item">SSM</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/spring/"><span class="level-start"><span class="level-item">spring</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/"><span class="level-start"><span class="level-item">数据库</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/"><span class="level-start"><span class="level-item">Mysql</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/Liust1918.githud.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="level-start"><span class="level-item">设计模式</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T17:11:33.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/Mysql%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/">Mysql必知必会书</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a> / <a href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/">Mysql</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:56:56.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/SSM/">SSM</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/SSM/">SSM</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:56:56.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/SSM%E9%87%8D%E6%96%B0%E5%AD%A6%E4%B9%A0/">SSM重新学习</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a href="/Liust1918.githud.io/categories/%E5%90%8E%E7%AB%AF/SSM/">SSM</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:38:34.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/">买卖股票的最佳时机IV</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/LeetCode/">LeetCode</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-12-03T16:38:34.000Z">2022-12-04</time></p><p class="title"><a href="/Liust1918.githud.io/2022/12/04/%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4/">网络延迟时间</a></p><p class="categories"><a href="/Liust1918.githud.io/categories/LeetCode/">LeetCode</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Liust1918.githud.io/archives/2022/12/"><span class="level-start"><span class="level-item">十二月 2022</span></span><span class="level-end"><span class="level-item tag">20</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/Android/"><span class="tag">Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/C/"><span class="tag">C</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/C/"><span class="tag">C++</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/Hexo/"><span class="tag">Hexo</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/Hibernate/"><span class="tag">Hibernate</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/LeetCode/"><span class="tag">LeetCode</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/SSM/"><span class="tag">SSM</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/git/"><span class="tag">git</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/githud/"><span class="tag">githud</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/java/"><span class="tag">java</span><span class="tag">17</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/java8/"><span class="tag">java8</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/mysql/"><span class="tag">mysql</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/spring/"><span class="tag">spring</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/springboot2/"><span class="tag">springboot2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/%E5%90%8E%E7%AB%AF/"><span class="tag">后端</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/%E6%8A%80%E6%9C%AF%E4%B9%A6/"><span class="tag">技术书</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/Liust1918.githud.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="tag">设计模式</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="adsense"><div class="card-content"><div class="menu"><h3 class="menu-label">广告</h3><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:block" data-ad-client="liust" data-ad-slot="1918" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/Liust1918.githud.io/"><img src="/Liust1918.githud.io/img/Battlerfiled3.jpg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/Liust1918"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/Liust1918.githud.io/js/column.js"></script><script src="/Liust1918.githud.io/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/Liust1918.githud.io/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/Liust1918.githud.io/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/Liust1918.githud.io/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/Liust1918.githud.io/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
